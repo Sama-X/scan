@@ -1,9 +1,9 @@
 import './index.css'
 import React, { Component } from "react";
 import { Row, Col, Input, Select, Card, Button, Divider, AutoComplete } from "antd";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Request from '../../request.ts';
-import {withRouter} from "react-router-dom";
+import {} from "react-router-dom";
 import { UserOutlined } from '@ant-design/icons';
 
 
@@ -66,6 +66,7 @@ class Home extends Component {
     blocksList:[],
     transactionsList:[],
     autoList:[],
+    timer: null,
   };
   constructor (props) {
     super(props)
@@ -76,6 +77,7 @@ class Home extends Component {
       blocksList:[],
       transactionsList:[],
       autoList:[],
+      timer: null,
     };
   }
   onSearch = (value) => console.log(value);
@@ -159,6 +161,24 @@ class Home extends Component {
   }
   jumpAddress = (id) => {
     this.props.history.push({pathname:'/Address', state: { id: id } })
+  }
+
+  componentDidMount() {
+    this.state.timer = setInterval(() => {
+      // this.setState({blocksList:[],transactionsList:[]})
+      this.getBlockList()
+      this.getTransactionsList()
+      this.setState(() => ({
+          count: --this.state.count,
+      }), () => {
+          if (this.state.count < 1) {
+              clearInterval(this.state.timer);
+          }
+      });
+    }, 10000)
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.timer);
   }
   render() {
     return (
