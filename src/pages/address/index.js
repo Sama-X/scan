@@ -94,8 +94,8 @@ class Address extends Component {
   };
   constructor (props) {
     super(props)
-    this.getAddressTopDetail('0x8db97c7cece249c2b98bdc0226cc4c2a57bf52fc')
-    // this.getAddressTopDetail(props.location.state.id)
+    // this.getAddressTopDetail('0x8db97c7cece249c2b98bdc0226cc4c2a57bf52fc')
+    this.getAddressTopDetail(props.location.state.id)
 
     this.state = {
       addressId:'',
