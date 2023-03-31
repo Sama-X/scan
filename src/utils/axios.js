@@ -1,7 +1,7 @@
 // import axios from 'axios';
 
-const proBaseURL = 'http://192.168.0.115:8080';
-// const proBaseURL = 'http://47.122.41.201:8000';
+// const proBaseURL = 'http://192.168.0.115:8080';
+const proBaseURL = 'http://scan.sama.network';
 
 // http://47.122.41.201:8000/api/apps
 
