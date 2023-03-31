@@ -169,14 +169,14 @@ class Index extends Component {
                   <Col className="footerLt" xs={{ span: 24}} lg={{ span: 12 }} style={{ display: 'flex'}}>
                     <img className="footerLeftLogo" src={require("../../assets/logo1.png")}/>
                     <div>
-                      Powered By SAMA C-Chain
+                      Powered By SAMA
                     </div>
                   </Col>
                   <Col className="footerGt" xs={{ span: 24 }} lg={{ span: 6,offset:6  }} style={{display:'flex',justifyContent:'end'}}>
-                    <div className="footerBtnBox">
+                    {/* <div className="footerBtnBox">
                       <img className="footerLeftLogo" src='https://testnet.snowtrace.io/images/svg/brands/metamask.svg'/>
                       <div>
-                        Add C-Chain (Testnet) Network
+                        Add (Testnet) Network
                       </div>
                     </div>
                     <div className="footerBtnBox">
@@ -184,7 +184,7 @@ class Index extends Component {
                       <div>
                         Preferences
                       </div>
-                    </div>
+                    </div> */}
                   </Col>
                 </Row>
                 <Divider style={{borderColor: '#e7eaf3'}}/>

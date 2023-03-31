@@ -184,7 +184,7 @@ class Home extends Component {
     return (
       <div className="home-page">
         <div className="homeSearchBox">
-          <h2>Sama C-Chain Testnet Explorer</h2>
+          <h2>Sama Testnet Explorer</h2>
           <div className='homeSearchInput'>
             {/* <Select
               className='homeSearchSelect'
