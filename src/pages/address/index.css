@@ -1,0 +1,44 @@
+.address-page{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.addressHeaderBox{
+    display: flex;
+    /* justify-content:space-between; */
+}
+.addressHeaderNumber{
+    background-color: rgba(219,154,4,.1);
+    padding: 5px 10px;
+    height: 30px;
+    line-height: 20px;
+}
+.ant-table-cell a,:where(.css-dev-only-do-not-override-1me4733).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    color:#e84142
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active,:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active:hover{
+    border-color: #e84142;
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active a,:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active:hover a{
+    color:#e84142
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-tabs .ant-tabs-ink-bar{
+    background:#e84142;
+}
+.addressListBox{
+    margin: 20px 0;
+}
+.addressItemBigBox{
+    display: flex;
+    justify-content:space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding: 10px 0;
+}
+.addressItemBigBox div{
+    width: 50%;
+    vertical-align: middle;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+
+}

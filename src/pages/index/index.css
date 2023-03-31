@@ -1,0 +1,149 @@
+.ant-layout{
+    /* display: inherit; */
+    /* background: #1b1d1f; */
+}
+.headerAndContent, .ant-layout-content{
+    width: -webkit-fill-available !important;
+}
+.headerNavBox{
+    display:flex;
+    justify-content: space-between;
+}
+.ant-layout-header{
+    padding-inline: 0;
+}
+.logoImgBox{
+    height: 64px;
+}
+.logo1{
+    height: 30px;
+    margin: 17px auto;
+}
+.logo2{
+    height: 20px;
+    margin: 22px 0 12px 0;
+}
+.navLogo{
+    margin: 12px 25px;
+    height: 40px;
+    color: #fff;
+}
+
+.ant-layout-sider-trigger{
+    display: none;
+}
+.contentValue{
+    margin: 16px;
+    width: 100%;
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-item:hover::after, :where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-submenu:hover::after, :where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-item-active::after, :where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-submenu-active::after, :where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-item-open::after, :where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-submenu-open::after{
+    border-color: red;
+}
+.ant-menu-item-divider{
+    width: 95%;
+    margin: 0 auto;
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-item-selected, :where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-submenu-selected,:where(.css-dev-only-do-not-override-1me4733).ant-menu-light .ant-menu-submenu-selected >.ant-menu-submenu-title,:where(.css-dev-only-do-not-override-1me4733).ant-menu-light .ant-menu-item-selected{
+    color: #e84142;
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-item-selected::after, :where(.css-dev-only-do-not-override-1me4733).ant-menu-light.ant-menu-horizontal >.ant-menu-submenu-selected::after{
+    border-color: #e84142;
+}
+.ant-layout .ant-layout-sider,.ant-menu-light,.ant-menu-light:not(.ant-menu-horizontal) .ant-menu-submenu-title:active,.ant-menu-light:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):active{
+    /* background: #2c2e2f; */
+}
+.ant-menu-light .ant-menu-item-selected{
+    background: rgba(0,0,0,.1);
+}
+.ant-menu-light,.ant-menu-light .ant-menu-submenu-title:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected),.ant-menu-light .ant-menu-item:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected),.ant-menu-light .ant-menu-submenu-title:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected),.ant-menu-light .ant-menu-item-selected,.ant-menu-light .ant-menu-submenu-selected >.ant-menu-submenu-title{
+    /* color: white; */
+}
+.ant-btn-default {
+    border-radius: 20px;
+    margin: 18px 10px;
+}
+.ant-btn-default:not(:disabled):hover,.ant-btn-default:not(:disabled):active,.ant-btn:not(:disabled):focus-visible {
+    color: rgba(0, 0, 0, 0.88);
+    border-color: #d9d9d9;
+}
+.ant-btn:not(:disabled):focus-visible {
+    outline: 0 solid #d9d9d9;
+}
+.footerBigBox{
+    width: 100%;
+    /* margin: 16px 16px; */
+    /* margin: 0 auto; */
+}
+.footerBigBox{
+    padding: 0 0;
+}
+.footerBox{
+    background:#000;
+    /* border-radius: 5px; */
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 5%;
+    font-size: 1.3rem;
+    color: #6c757d;
+}
+.footerLeftLogo{
+    height: 25px;
+}
+.footerLt div{
+    font-size: 1.09375rem;
+    color: white;
+    margin-left: 10px;
+}
+.footerBtnBox{
+    display: flex;
+    font-size: .65625rem;
+    line-height: 1.65625rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.25rem;
+    color: #f8f9fa;
+    background: rgba(248,249,250,.1);
+    border-color: transparent;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.footerBtnBox div{
+    margin-left:5px;
+}
+.footerBot{
+    color: #fff;
+}
+.footerBot .footerBotRed{
+    color: #e84142;
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-menu-horizontal .ant-menu-submenu-arrow{
+    display: block;
+    right: -10px;
+}
+.footerBtnBox:hover{
+    color: #000;
+    background: #f8f9fa;
+    box-shadow: 0 4px 11px rgba(248,249,250,.35);
+}
+@media screen and (max-width: 1000px) {
+    .footerBigBox{
+        width: 93%;
+        margin: 0 auto;
+    }
+    .footerLt{
+        margin-bottom:20px;
+    }
+    .footerLt div{
+        text-align:center;
+    }
+    .footerLogo{
+        width: 70%;
+        margin: 0 15% 20px;
+    }
+    .footerLt .anticon{
+        font-size: 20px;
+    }
+    .footerRemark{
+        text-align: center;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,24 @@
+.accounts-page{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.accountsHeaderBox{
+    display: flex;
+    justify-content:space-between;
+}
+.accountsHeaderNumber{
+    background-color: rgba(219,154,4,.1);
+    padding: 5px 10px;
+    height: 30px;
+    line-height: 20px;
+}
+.ant-table-cell a{
+    color:#e84142
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active,:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active:hover{
+    border-color: #e84142;
+}
+:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active a,:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active:hover a{
+    color:#e84142
+}
