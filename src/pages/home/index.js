@@ -93,6 +93,12 @@ class Home extends Component {
   getTransactionsList = function() {
     let _this = this
     request.get('/api/v1/home/txs?page=1&offset=20').then(function(resData){
+      for(let i in resData.data){
+        resData.data[i].amountLocal = 0
+        if(resData.data[i].amount){
+          resData.data[i].amountLocal = resData.data[i].amount.toLocaleString()
+        }
+      }
         _this.setState({transactionsList:resData.data});
     })
   }
@@ -288,7 +294,7 @@ class Home extends Component {
                         </Col>
                         <Col xs={{ span: 5}} lg={{ span: 5}} className="homeRightItem">
                           <div>
-                            {item.amount} SAMA
+                            {item.amountLocal} SAMA
                           </div>
                         </Col>
                       </Row>

@@ -79,6 +79,11 @@ const columns = [
     title: 'Value',
     dataIndex: 'amount',
     key: 'amount',
+    render: (to) => (
+      <span>
+        {to.toLocaleString()}
+      </span>
+    ),
   },
   {
     title: 'Txn Fee',
@@ -91,6 +96,7 @@ class Address extends Component {
     addressId:'',
     addressTopDetail:{},
     addressBottomDetail:[],
+    balanceValue: 0,
   };
   constructor (props) {
     super(props)
@@ -101,6 +107,7 @@ class Address extends Component {
       addressId:'',
       addressTopDetail:{},
       addressBottomDetail:[],
+      balanceValue: 0,
     };
   }
   onChange = (key) => {
@@ -114,7 +121,9 @@ class Address extends Component {
     let _this = this
     request.get('/api/v1/wallet/'+id).then(function(resData){
       _this.getAddressBottomDetail(id)
-      _this.setState({addressTopDetail:resData.data,addressId:id});
+      console.log(Number(resData.data.balance).toLocaleString())
+      resData.data.balance.toLocaleString()
+      _this.setState({addressTopDetail:resData.data,addressId:id,balanceValue:resData.data.balance.toLocaleString()});
     })
   }
   getAddressBottomDetail = (id) => {
@@ -130,7 +139,7 @@ class Address extends Component {
     return (
       <div className="address-page">
         <div className="addressHeaderBox">
-          <h2>Contract {this.state.addressId}</h2>
+          <h2>address {this.state.addressId}</h2>
           <CopyFilled style={{fontSize:22}} onClick={()=>this.copyFunction('0x5425890298aed601595a70AB815c96711a31Bc65')}/>
         </div>
 
@@ -145,7 +154,7 @@ class Address extends Component {
             >
               <div className="addressItemBigBox">
                   <div className="addressRedItem">Balance:</div>
-                  <div className="addressGeryItem">{this.state.addressTopDetail.balance}  SAMA</div>
+                  <div className="addressGeryItem">{this.state.balanceValue}  SAMA</div>
               </div>
               <div className="addressItemBigBox" style={{height:20,border:'none'}}></div>
               <div className="addressItemBigBox" style={{height:20,border:'none'}}></div>

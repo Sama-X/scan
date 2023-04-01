@@ -34,6 +34,10 @@ class TransactionsDetail extends Component {
   getTransactionsDetail = (id) => {
     let _this = this
     request.get('/api/v1/txs/'+id).then(function(resData){
+      resData.data.amountLocal = 0
+      if(resData.data.amount){
+        resData.data.amountLocal = resData.data.amount.toLocaleString()
+      }
       _this.setState({transactionsDetail:resData.data,transactionsId:id});
     })
   }
@@ -109,7 +113,7 @@ class TransactionsDetail extends Component {
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />To:</div>
                   <div className="transactionsDetailGeryItem">
-                    Contract
+                    Address
                     <span className="longChang redSpan cursorClass"  style={{width: '200px'}} onClick={() => {this.jumpAddress(this.state.transactionsDetail.to)}}>{this.state.transactionsDetail.to}</span>
                     {
                       this.state.transactionsDetail.to ?
@@ -121,7 +125,7 @@ class TransactionsDetail extends Component {
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Value:</div>
                   <div className="transactionsDetailGeryItem">
-                    <span className="bgGrey">{this.state.transactionsDetail.amount} SAMA </span>(${this.state.transactionsDetail.amount})
+                    <span className="bgGrey">{this.state.transactionsDetail.amountLocal} SAMA </span>(${this.state.transactionsDetail.amountLocal})
                   </div>
               </div>
               {/* <div className="transactionsDetailItemBigBox">
