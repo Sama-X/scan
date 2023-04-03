@@ -204,7 +204,7 @@ class Address extends Component {
           }}>
             <div slot="title">
               <Tabs defaultActiveKey="1" items={items} onChange={this.onChange} />
-              <h4>Latest 25 from a total of 25 transactions</h4>
+              <h4>Latest {this.state.addressBottomTotal} from a total of {this.state.addressBottomTotal} transactions</h4>
             </div>
           <Table
             columns={columns}
@@ -212,6 +212,7 @@ class Address extends Component {
             rowKey={(record) => record.index}
             pagination={{
               position: ['topRight', 'bottomRight'],
+              total:this.state.addressBottomTotal,
             }}
             onChange={this.paginationChange}
           />

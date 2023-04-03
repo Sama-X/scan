@@ -96,6 +96,7 @@ class Blocks extends Component {
             rowKey={(record) => record.index}
             pagination={{
               position: ['topRight', 'bottomRight'],
+              total:this.state.blocksTotal,
             }}
             onChange={this.paginationChange}
           />

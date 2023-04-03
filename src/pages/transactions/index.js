@@ -151,7 +151,7 @@ class Transactions extends Component {
           }}>
             <div slot="title">
               <h4>More than > 65,277,407 transactions found</h4>
-              <div>(Showing the last 500k records)</div>
+              <div>(Showing the last {this.state.transactionsTotal}k records)</div>
             </div>
           <Table
             columns={columns}
@@ -159,6 +159,7 @@ class Transactions extends Component {
             rowKey={(record) => record.index}
             pagination={{
               position: ['topRight', 'bottomRight'],
+              total:this.state.transactionsTotal,
             }}
             onChange={this.paginationChange}
           />
