@@ -163,8 +163,10 @@ class Transactions extends Component {
     }
   }
   render() {
+    let info = navigator.userAgent;
+    let isPhone = /mobile/i.test(info);
     return (
-      <div className="transactions-page">
+      <div className="transactions-page" style={{padding: isPhone ? '20px 0' : '80px 0'}}>
         <div className="transactionsHeaderBox">
           <h2>Transactions</h2>
         </div>
@@ -186,6 +188,9 @@ class Transactions extends Component {
               pageSize: this.state.pageSize,
               current: this.state.current,
               total:this.state.transactionsTotal,
+            }}
+            scroll={{
+              x: 1300,
             }}
             onChange={this.paginationChange}
           />

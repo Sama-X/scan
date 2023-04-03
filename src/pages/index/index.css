@@ -157,6 +157,10 @@
         text-align: center;
         font-size: 12px;
     }
+    .logo2{
+        height: 24px;
+        margin-left: 20px;
+    }
 }
 .homeWidth{
     width: 90%;
@@ -173,4 +177,5 @@
         min-width: 1600px !important;
         margin: 0 auto;
     }
+
 }

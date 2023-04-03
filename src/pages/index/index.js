@@ -4,6 +4,7 @@ import { Layout, Menu, Button, Drawer, Divider, Row, Col } from "antd";
 import {
   SettingOutlined,
   HeartFilled,
+  UnorderedListOutlined,
 } from '@ant-design/icons';
 import { useState } from 'react';
 import { RenderRoutes } from "../../router/allocation";
@@ -99,7 +100,7 @@ class Index extends Component {
       <Layout>
         <Layout className="site-layout">
           <div className="headerAndContent" id="page-top" style={{height: "100vh",overflow:'scroll'}}>
-            <Header className="ant-layout-header" style={{ zIndex: 999, position: "fixed",width: "inherit", background:'white',height: 100}}>
+            <Header className="ant-layout-header" style={{ zIndex: 999, position: "fixed",width: "inherit", background:'white',height: isPhone ? 70 : 100}}>
               <div>
                 {
                   isPhone ?
@@ -109,7 +110,8 @@ class Index extends Component {
                         type="primary"
                         onClick={() => this.setState({collapsed: !collapsed})}
                       >
-                        <img className="navLogo" src={require("../../assets/menu.png")}/>
+                        <UnorderedListOutlined className="navLogo" style={{color: '#001529',fontSize: "25px"}}/>
+                        {/* <img className="navLogo" src={require("../../assets/menu.png")}/> */}
                     </div>
                   </div>
                   :''
@@ -125,7 +127,7 @@ class Index extends Component {
                     onClose={this.onClose}
                     open={collapsed}
                     key='left'
-                    style={{background:'#202123',color:'white'}}
+                    style={{color:'white'}}
                   >
                     <Menu
                         style={{

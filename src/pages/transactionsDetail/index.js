@@ -57,8 +57,10 @@ class TransactionsDetail extends Component {
     this.props.history.push('/Address?id='+id)
   }
   render() {
+    let info = navigator.userAgent;
+    let isPhone = /mobile/i.test(info);
     return (
-      <div className="transactionsDetail-page">
+      <div className="transactionsDetail-page" style={{padding: isPhone ? '20px 0' : '80px 0'}}>
         <div className="transactionsDetailHeaderBox">
           <h2>Transaction Details</h2>
         </div>
@@ -70,7 +72,7 @@ class TransactionsDetail extends Component {
           }}>
             <div slot="title">
               <Tabs defaultActiveKey="1" items={items} onChange={this.onChange} />
-              <h4 className="bgRed">[ This is a Avalanche Chain Testnet transaction only ]</h4>
+              {/* <h4 className="bgRed">[ This is a Avalanche Chain Testnet transaction only ]</h4> */}
             </div>
             <div slot="body">
               <div className="transactionsDetailItemBigBox">
@@ -126,8 +128,9 @@ class TransactionsDetail extends Component {
               <Divider/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Value:</div>
-                  <div className="transactionsDetailGeryItem">
-                    <span className="bgGrey">{this.state.transactionsDetail.amountLocal} SAMA </span>(${this.state.transactionsDetail.amountLocal})
+                  <div className="transactionsDetailGeryItem" style={{display:"flex",flexWrap:'wrap'}}>
+                    <span className="bgGrey">{this.state.transactionsDetail.amountLocal} SAMA </span>
+                    <span>(${this.state.transactionsDetail.amountLocal})</span>
                   </div>
               </div>
               {/* <div className="transactionsDetailItemBigBox">

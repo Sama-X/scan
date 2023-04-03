@@ -158,11 +158,18 @@ class Address extends Component {
     // this.props.history.push({pathname:'/blocksDetail', state: { id: id } })
   }
   render() {
+    let info = navigator.userAgent;
+    let isPhone = /mobile/i.test(info);
     return (
-      <div className="address-page">
+      <div className="address-page" style={{padding: isPhone ? '20px 0' : '80px 0'}}>
         <div className="addressHeaderBox">
-          <h2>address&nbsp;&nbsp;{this.state.addressId}</h2>
-          <CopyFilled style={{fontSize:22}} onClick={()=>this.copyFunction('0x5425890298aed601595a70AB815c96711a31Bc65')}/>
+          <h2 style={{display:"flex",flexWrap:'wrap',width:'100%'}}>
+            <span>address&nbsp;&nbsp;</span>
+            <span className="longChang" style={{width: isPhone ? '280px' : 'auto'}}>
+              {this.state.addressId}
+            </span>
+            <CopyFilled style={{fontSize:22}} onClick={()=>this.copyFunction('0x5425890298aed601595a70AB815c96711a31Bc65')}/>
+          </h2>
         </div>
 
         <Row className="addressListBox">
@@ -172,6 +179,7 @@ class Address extends Component {
               bordered={false}
               style={{
                 width: '100%',
+                marginBottom: '20px',
               }}
             >
               <div className="addressItemBigBox">
@@ -189,6 +197,7 @@ class Address extends Component {
               bordered={false}
               style={{
                 width: '100%',
+                marginBottom: '20px',
               }}
             >
               <div className="addressItemBigBox">
@@ -232,6 +241,9 @@ class Address extends Component {
               pageSize: this.state.pageSize,
               current: this.state.current,
               total:this.state.addressBottomTotal,
+            }}
+            scroll={{
+              x: 1300,
             }}
             onChange={this.paginationChange}
             onShowSizeChange={this.onShowSizeChange}

@@ -8,10 +8,20 @@
     justify-content:space-between;
 }
 .blocksHeaderNumber{
+    position: relative;
     background-color: rgba(219,154,4,.1);
     padding: 5px 10px;
     height: 30px;
     line-height: 20px;
+}
+.blocksHeaderNumber span:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    border-top: 0.7rem solid transparent;
+    border-bottom: 0.7rem solid transparent;
+    border-left: 0.7rem solid #f8f9fa;
 }
 .ant-table-cell a{
     color:#e84142

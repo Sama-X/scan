@@ -52,10 +52,18 @@ class BlocksDetail extends Component {
     this.props.history.push('/transactions?id='+id)
   }
   render() {
+    let info = navigator.userAgent;
+    let isPhone = /mobile/i.test(info);
     return (
-      <div className="transactionsDetail-page">
+      <div className="transactionsDetail-page" style={{padding: isPhone ? '20px 0' : '80px 0'}}>
         <div className="transactionsDetailHeaderBox">
-          <h2>Block  #{this.state.blockId}</h2>
+          <h2 style={{display:"flex",flexWrap:'wrap',width:'100%'}}>
+            <span>Block&nbsp;&nbsp;</span>
+            <span className="longChang" style={{width: isPhone ? '280px' : 'auto',lineHeight:'24px'}}>
+              #{this.state.blockId}
+            </span>
+            {/* <CopyFilled style={{fontSize:22}} onClick={()=>this.copyFunction('0x5425890298aed601595a70AB815c96711a31Bc65')}/> */}
+          </h2>
         </div>
 
         <Card
@@ -65,7 +73,7 @@ class BlocksDetail extends Component {
           }}>
             <div slot="title">
               <Tabs defaultActiveKey="1" items={items} onChange={this.onChange} />
-              <h4 className="bgRed">[ This is a Avalanche Chain Testnet block only ]</h4>
+              {/* <h4 className="bgRed">[ This is a Avalanche Chain Testnet block only ]</h4> */}
             </div>
             <div slot="body">
               <div className="transactionsDetailItemBigBox">
@@ -86,8 +94,9 @@ class BlocksDetail extends Component {
               <Divider/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Transactions:</div>
-                  <div className="transactionsDetailGeryItem">
-                    <span className="bgRed cursorClass" onClick={()=>this.jumpTransaction(this.state.blocksDetail.block_id)}>{this.state.blocksDetail.txs_total} transactions&nbsp;&nbsp;</span>  in this block
+                  <div className="transactionsDetailGeryItem" style={{display:"flex",flexWrap:'wrap'}}>
+                    <span className="bgRed cursorClass" onClick={()=>this.jumpTransaction(this.state.blocksDetail.block_id)}>{this.state.blocksDetail.txs_total} transactions&nbsp;&nbsp;</span>
+                    <span>in this block</span>
                   </div>
               </div>
               <Divider/>

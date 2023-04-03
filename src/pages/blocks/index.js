@@ -84,11 +84,15 @@ class Blocks extends Component {
     this.getBlockList(page.current,page.pageSize)
   }
   render() {
+    let info = navigator.userAgent;
+    let isPhone = /mobile/i.test(info);
     return (
-      <div className="blocks-page">
+      <div className="blocks-page" style={{padding: isPhone ? '20px 0' : '80px 0'}}>
         <div className="blocksHeaderBox">
           <h2>Blocks</h2>
-          <div className="blocksHeaderNumber">🔥 Burnt Fees: 0 SAMA</div>
+          <div className="blocksHeaderNumber">
+            <span>🔥 Burnt Fees: 0 SAMA</span>
+          </div>
         </div>
         <Card
           bordered={false}
@@ -108,6 +112,9 @@ class Blocks extends Component {
               pageSize: this.state.pageSize,
               current: this.state.current,
               total:this.state.blocksTotal,
+            }}
+            scroll={{
+              x: 1300,
             }}
             onChange={this.paginationChange}
           />

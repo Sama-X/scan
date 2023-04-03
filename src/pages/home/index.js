@@ -235,7 +235,7 @@ class Home extends Component {
                   this.state.blocksList.map((item,index) => (
                     <div key={index}>
                       <Row className="homeItembox">
-                        <Col xs={{ span: 13}} lg={{ span: 13 }} className="homeLeftItem">
+                        <Col xs={{ span: 24}} lg={{ span: 13 }} className="homeLeftItem">
                         {/* <Col xs={{ span: 6}} lg={{ span: 6 }} className="homeLeftItem"> */}
                           <div className="homeBack">BK</div>
                           <div>
@@ -243,7 +243,7 @@ class Home extends Component {
                             <div className="homeGeryItem">{item.block_time}</div>
                           </div>
                         </Col>
-                        <Col xs={{ span: 11}} lg={{ span: 11 }} className="homeCenterItem">
+                        <Col xs={{ span: 24}} lg={{ span: 11 }} className="homeCenterItem">
                           <div style={{display: 'flex'}}>Hash&nbsp;&nbsp;<span className="homeRedItem homeItemOne cursorClass"  onClick={() => this.jumpBlockDetail(item.block_id)}>{item.block_id}</span></div>
                           <div className="homeGeryItem"><span className="homeRedItem">{item.txs_total} txns&nbsp;&nbsp;</span>in {item.txs_total} sec</div>
                         </Col>
@@ -280,18 +280,18 @@ class Home extends Component {
                   this.state.transactionsList.map((item,index) => (
                     <div key={index}>
                       <Row className="homeItembox">
-                        <Col xs={{ span: 8}} lg={{ span: 8 }} className="homeLeftItem">
+                        <Col xs={{ span: 24}} lg={{ span: 8 }} className="homeLeftItem">
                           <div className="homeBack homeTx">Tx</div>
                           <div>
                             <div className="homeRedItem longChang cursorClass" onClick={()=>this.jumpTransactionDetail(item.txid)}>{item.txid}</div>
                             <div className="homeGeryItem">{item.block_time}</div>
                           </div>
                         </Col>
-                        <Col xs={{ span: 11}} lg={{ span: 11 }} className="homeCenterItem">
+                        <Col xs={{ span: 24}} lg={{ span: 11 }} className="homeCenterItem">
                           <div style={{display: 'flex'}}>From&nbsp;&nbsp;<span onClick={()=>this.jumpAddress(item.from)} className="homeRedItem homeItemOne cursorClass">{item.from}</span></div>
                           <div style={{display: 'flex'}}>To&nbsp;&nbsp;<span onClick={()=>this.jumpAddress(item.to)} className="homeRedItem homeItemOne cursorClass">{item.to}</span></div>
                         </Col>
-                        <Col xs={{ span: 5}} lg={{ span: 5}} className="homeRightItem">
+                        <Col xs={{ span: 10}} lg={{ span: 5}} className="homeRightItem">
                           <div>
                             {item.amountLocal} SAMA
                           </div>
