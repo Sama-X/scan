@@ -53,17 +53,26 @@ class Blocks extends Component {
   };
   constructor (props) {
     super(props)
-    this.getBlockList()
+    this.getBlockList(1)
     this.state = {
       blocksList:[],
       blocksTotal: 0,
     };
   }
-  getBlockList = function() {
+  getBlockList = function(page) {
     let _this = this
-    request.get('/api/v1/home/blocks?page=1&offset=20').then(function(resData){
+
+    request.get('/api/v1/home/blocks?page='+page+'&offset=10').then(function(resData){
+      _this.setState({blocksList:[]})
+      for(let i in resData.data){
+        resData.data[i].index = i+1
+      }
         _this.setState({blocksList:resData.data,blocksTotal:resData.total});
     })
+  }
+  paginationChange = (page, pageSize) => {
+    console.log(page, pageSize)
+    this.getBlockList(page.current)
   }
   render() {
     return (
@@ -81,7 +90,15 @@ class Blocks extends Component {
               {/* <h4>Block  #20413166 to  #20413190 </h4> */}
               <div>(Total of {this.state.blocksTotal} blocks)</div>
             </div>
-          <Table columns={columns} dataSource={this.state.blocksList} rowKey={(record) => record.block_id}/>
+          <Table
+            columns={columns}
+            dataSource={this.state.blocksList}
+            rowKey={(record) => record.index}
+            pagination={{
+              position: ['topRight', 'bottomRight'],
+            }}
+            onChange={this.paginationChange}
+          />
         </Card>
       </div>
     );

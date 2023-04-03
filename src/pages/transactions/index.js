@@ -86,32 +86,53 @@ class Transactions extends Component {
   state = {
     transactionsId:'',
     transactionsList:[],
+    isId:'',
+    transactionsTotal: 0,
   };
   constructor (props) {
     super(props)
     if(!props.location.state){
-        this.getTransactionsListNoId()
+        this.getTransactionsListNoId(1)
+        this.state.isId = false
     }else{
-      this.getTransactionsListId(props.location.state.id)
+      this.getTransactionsListId(props.location.state.id,1)
+      this.state.isId = true
     }
     this.state = {
       transactionsId: props.location.state ? props.location.state.id : '',
       transactionsList:[],
+      isId:'',
+      transactionsTotal: 0
     };
   }
-  getTransactionsListNoId = () => {
+  getTransactionsListNoId = (page) => {
     let _this = this
-    request.get('/api/v1/home/txs?page=1&offset=20').then(function(resData){
-
-      _this.setState({transactionsList:resData.data});
+    request.get('/api/v1/home/txs?page='+page+'&offset=10').then(function(resData){
+      _this.setState({transactionsList:[]});
+      for(let i in resData.data){
+        resData.data[i].index = i+1
+      }
+      _this.setState({transactionsList:resData.data,transactionsTotal:resData.total});
     })
   }
-  getTransactionsListId= (id) => {
+  getTransactionsListId= (id,page) => {
     let _this = this
     let data = []
-    request.get('/api/v1/blocks/'+id+'/txs').then(function(resData){
-      _this.setState({transactionsList:resData.data,transactionsId:id});
+    request.get('/api/v1/blocks/'+id+'/txs?page='+page+'&offset=10').then(function(resData){
+      _this.setState({transactionsList:[]});
+      for(let i in resData.data){
+        resData.data[i].index = i+1
+      }
+      _this.setState({transactionsList:resData.data,transactionsId:id,transactionsTotal:resData.total});
     })
+  }
+  paginationChange = (page, pageSize) => {
+    console.log(page, pageSize)
+    if(this.state.isId){
+      this.getTransactionsListId(this.state.getTransactionsListId,page.current)
+    }else{
+      this.getTransactionsListNoId(page.current)
+    }
   }
   onSearch = (value) => console.log(value);
   searchHandleChange = (value) => {
@@ -132,7 +153,15 @@ class Transactions extends Component {
               <h4>More than > 65,277,407 transactions found</h4>
               <div>(Showing the last 500k records)</div>
             </div>
-          <Table columns={columns} dataSource={this.state.transactionsList} rowKey={(record) => record.txid}/>
+          <Table
+            columns={columns}
+            dataSource={this.state.transactionsList}
+            rowKey={(record) => record.index}
+            pagination={{
+              position: ['topRight', 'bottomRight'],
+            }}
+            onChange={this.paginationChange}
+          />
         </Card>
       </div>
     );

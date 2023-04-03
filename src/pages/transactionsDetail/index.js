@@ -36,7 +36,7 @@ class TransactionsDetail extends Component {
     request.get('/api/v1/txs/'+id).then(function(resData){
       resData.data.amountLocal = 0
       if(resData.data.amount){
-        resData.data.amountLocal = resData.data.amount.toLocaleString()
+        resData.data.amountLocal = resData.data.amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2')
       }
       _this.setState({transactionsDetail:resData.data,transactionsId:id});
     })

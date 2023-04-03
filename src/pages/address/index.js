@@ -120,20 +120,25 @@ class Address extends Component {
   getAddressTopDetail = (id) => {
     let _this = this
     request.get('/api/v1/wallet/'+id).then(function(resData){
-      _this.getAddressBottomDetail(id)
-      console.log(Number(resData.data.balance).toLocaleString())
-      resData.data.balance.toLocaleString()
-      _this.setState({addressTopDetail:resData.data,addressId:id,balanceValue:resData.data.balance.toLocaleString()});
+      _this.getAddressBottomDetail(id,1)
+      let localNumber = resData.data.balance.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2')
+
+      _this.setState({addressTopDetail:resData.data,addressId:id,balanceValue:localNumber});
     })
   }
-  getAddressBottomDetail = (id) => {
+  getAddressBottomDetail = (id,page) => {
     let _this = this
-    request.get('/api/v1/wallet/'+id+'/txs').then(function(resData){
+    request.get('/api/v1/wallet/'+id+'/txs?page='+page+'&offset=10').then(function(resData){
+      _this.setState({addressBottomDetail:[]})
       for(let i in resData.data){
         resData.data[i].index = i+1
       }
-      _this.setState({addressBottomDetail:resData.data});
+      _this.setState({addressBottomDetail:resData.data,addressBottomTotal:resData.total});
     })
+  }
+  paginationChange = (page, pageSize) => {
+    console.log(page, pageSize)
+    this.getAddressBottomDetail(this.state.addressTopDetail,page.current)
   }
   render() {
     return (
@@ -146,7 +151,7 @@ class Address extends Component {
         <Row className="addressListBox">
           <Col xs={{ span: 24}} lg={{ span: 11 }}>
             <Card
-              title="Contract Overview"
+              title="Overview"
               bordered={false}
               style={{
                 width: '100%',
@@ -174,7 +179,7 @@ class Address extends Component {
                   <div className="addressGeryItem">Not Available</div>
               </div>
               <div className="addressItemBigBox">
-                  <div className="addressRedItem">ContractCreator:</div>
+                  <div className="addressRedItem">Creator:</div>
                   <div className="addressGeryItem">
                     <span>No Data</span>
                     {/* <span className="redSpan longChang">0x4f52a68d34287C9B17C6496BBE885f26B1F203C2</span>
@@ -201,7 +206,15 @@ class Address extends Component {
               <Tabs defaultActiveKey="1" items={items} onChange={this.onChange} />
               <h4>Latest 25 from a total of 25 transactions</h4>
             </div>
-          <Table columns={columns} dataSource={this.state.addressBottomDetail} rowKey={(record) => record.index} />
+          <Table
+            columns={columns}
+            dataSource={this.state.addressBottomDetail}
+            rowKey={(record) => record.index}
+            pagination={{
+              position: ['topRight', 'bottomRight'],
+            }}
+            onChange={this.paginationChange}
+          />
         </Card>
       </div>
     );

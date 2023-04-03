@@ -96,7 +96,7 @@ class Home extends Component {
       for(let i in resData.data){
         resData.data[i].amountLocal = 0
         if(resData.data[i].amount){
-          resData.data[i].amountLocal = resData.data[i].amount.toLocaleString()
+          resData.data[i].amountLocal = resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2')
         }
       }
         _this.setState({transactionsList:resData.data});
