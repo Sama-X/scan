@@ -20,6 +20,7 @@ export const menus = [
     { path: '/transactionsDetail', exact: true, name: 'transactionsDetail', component: TransactionsDetail },
     { path: '/blocksDetail', exact: true, name: 'blocksDetail', component: BlocksDetail },
 ]
+
 //登录、首页、404路由
 export const main = [
     { path: '/',  name: 'Home', component: Index, routes: menus },

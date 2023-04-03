@@ -2,6 +2,10 @@
     /* display: inherit; */
     /* background: #1b1d1f; */
 }
+.headerAndContent{
+    width: 1440px;
+    margin: 0 auto;
+}
 .headerAndContent, .ant-layout-content{
     width: -webkit-fill-available !important;
 }
@@ -13,15 +17,18 @@
     padding-inline: 0;
 }
 .logoImgBox{
-    height: 64px;
+    height: 94px;
+}
+.ant-menu-overflow-item{
+    line-height: 94px;
 }
 .logo1{
     height: 30px;
     margin: 17px auto;
 }
 .logo2{
-    height: 20px;
-    margin: 22px 0 12px 0;
+    height: 50px;
+    margin: 22px 0 22px 0;
 }
 .navLogo{
     margin: 12px 25px;
@@ -125,6 +132,10 @@
     box-shadow: 0 4px 11px rgba(248,249,250,.35);
 }
 @media screen and (max-width: 1000px) {
+    .headerAndContent{
+        width: 95%;
+        margin: 0 auto;
+    }
     .footerBigBox{
         width: 93%;
         margin: 0 auto;
@@ -145,5 +156,21 @@
     .footerRemark{
         text-align: center;
         font-size: 12px;
+    }
+}
+.homeWidth{
+    width: 90%;
+}
+@media screen and (min-width: 2000px) {
+    /* .logoImgBox .logo2{
+        height: 64px;
+    } */
+    .homeWidth{
+        width: 1600px;
+    }
+    .footerRow{
+        width: 1600px !important;
+        min-width: 1600px !important;
+        margin: 0 auto;
     }
 }

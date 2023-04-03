@@ -1,7 +1,7 @@
 .blocks-page{
     width: 90%;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 80px 0;
 }
 .blocksHeaderBox{
     display: flex;
@@ -21,4 +21,9 @@
 }
 :where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active a,:where(.css-dev-only-do-not-override-1me4733).ant-pagination .ant-pagination-item-active:hover a{
     color:#e84142
+}
+@media screen and (min-width: 2000px) {
+    .blocks-page{
+        width: 1600px;
+    }
 }

@@ -25,9 +25,9 @@ class TransactionsDetail extends Component {
   };
   constructor (props) {
     super(props)
-    this.getTransactionsDetail(props.location.state.id)
+    this.getTransactionsDetail(props.location.search.split("=")[1])
     this.state = {
-      transactionsId: props.location.state ? props.location.state.id : '',
+      transactionsId: props.location.search.split("=")[1] ? props.location.search.split("=")[1] : '',
       transactionsDetail:{},
     };
   }
@@ -49,10 +49,12 @@ class TransactionsDetail extends Component {
     message.success("Copy succeeded")
   }
   jumpBlockDetail = (id) => {
-    this.props.history.push({pathname:'/blocksDetail', state: { id: id } })
+    // this.props.history.push({pathname:'/blocksDetail', state: { id: id } })
+    this.props.history.push('/blocksDetail?id='+id)
   }
   jumpAddress = (id) => {
-    this.props.history.push({pathname:'/Address', state: { id: id } })
+    // this.props.history.push({pathname:'/Address', state: { id: id } })
+    this.props.history.push('/Address?id='+id)
   }
   render() {
     return (
@@ -113,7 +115,7 @@ class TransactionsDetail extends Component {
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />To:</div>
                   <div className="transactionsDetailGeryItem">
-                    Address
+                    Address&nbsp;&nbsp;
                     <span className="longChang redSpan cursorClass"  style={{width: '200px'}} onClick={() => {this.jumpAddress(this.state.transactionsDetail.to)}}>{this.state.transactionsDetail.to}</span>
                     {
                       this.state.transactionsDetail.to ?

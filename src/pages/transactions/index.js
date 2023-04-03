@@ -6,108 +6,114 @@ import Request from '../../request.ts';
 import {withRouter} from "react-router-dom";
 
 let request = new Request({});
-const columns = [
-  {
-    title: 'Txn Hash',
-    dataIndex: 'txid',
-    key: 'txid',
-    ellipsis: true,
-    render: (to) => (
-      <Link to={{ pathname: '/transactionsDetail', state: { id: to } }} title={to}>
-        {to}
-      </Link>
-    ),
-  },
-  {
-    title: 'Method',
-    dataIndex: 'method',
-    key: 'method',
-    ellipsis: {
-      showTitle: false,
-    },
-    render: (method) => (
-      <Tooltip placement="topLeft" title={method}>
-        {method ? method : 'null'}
-      </Tooltip>
-    ),
-  },
-  {
-    title: 'Block',
-    dataIndex: 'block_height',
-    key: 'block_height',
-    render: (text) => <Link to={{ pathname: '/blocksDetail', state: { id: text } }}>{text}</Link>,
-  },
-  {
-    title: 'Date Time (UTC)',
-    dataIndex: 'block_time',
-    key: 'block_time',
-    render: (text) => <span>{text ? text : 'null'}</span>,
-  },
-  {
-    title: 'From',
-    dataIndex: 'from',
-    ellipsis: true,
-    key: 'from',
-    render: (to) => (
-      <Link to={{ pathname: '/Address', state: { id: to } }} title={to}>
-        {to}
-      </Link>
-    ),
-  },
-
-  {
-    title: 'To',
-    dataIndex: 'to',
-    ellipsis: true,
-    key: 'to',
-    render: (to) => (
-      <Link to={{ pathname: '/Address', state: { id: to } }} title={to}>
-        {to}
-      </Link>
-    ),
-  },
-  {
-    title: 'Value',
-    dataIndex: 'amount',
-    key: 'amount',
-  },
-  // {
-  //   title: 'Txn Fee',
-  //   dataIndex: 'fee',
-  //   key: 'fee',
-  // },
-  {
-    title: 'Gas Price',
-    dataIndex: 'price',
-    key: 'price',
-  },
-];
 class Transactions extends Component {
   state = {
     transactionsId:'',
     transactionsList:[],
     isId:'',
     transactionsTotal: 0,
+    current:1,
+    pageSize:20,
   };
   constructor (props) {
     super(props)
-    if(!props.location.state){
-        this.getTransactionsListNoId(1)
+    // console.log(props,'transactions')
+    let _this = this
+    if(!props.location.search){
+        this.getTransactionsListNoId(_this.state.current,_this.state.pageSize)
         this.state.isId = false
     }else{
-      this.getTransactionsListId(props.location.state.id,1)
+      this.getTransactionsListId(props.location.search.split("=")[1],_this.state.current,_this.state.pageSize)
       this.state.isId = true
     }
     this.state = {
-      transactionsId: props.location.state ? props.location.state.id : '',
+      transactionsId: props.location.search ? props.location.search.split("=")[1] : '',
       transactionsList:[],
       isId:'',
-      transactionsTotal: 0
+      transactionsTotal: 0,
+      current:1,
+      pageSize:20,
+      columns:[
+        {
+          title: 'Txn Hash',
+          dataIndex: 'txid',
+          key: 'txid',
+          ellipsis: true,
+          render: (to) => (
+            <a onClick={() => _this.props.history.push('/transactionsDetail?id='+to)} title={to}>
+              {to}
+            </a>
+          ),
+        },
+        {
+          title: 'Method',
+          dataIndex: 'method',
+          key: 'method',
+          ellipsis: {
+            showTitle: false,
+          },
+          render: (method) => (
+            <Tooltip placement="topLeft" title={method}>
+              {method ? method : 'null'}
+            </Tooltip>
+          ),
+        },
+        {
+          title: 'Block',
+          dataIndex: 'block_height',
+          key: 'block_height',
+          render: (text) => <a onClick={() => _this.props.history.push('/blocksDetail?id='+text)}>{text}</a>,
+        },
+        {
+          title: 'Date Time (UTC)',
+          dataIndex: 'block_time',
+          key: 'block_time',
+          render: (text) => <span>{text ? text : 'null'}</span>,
+        },
+        {
+          title: 'From',
+          dataIndex: 'from',
+          ellipsis: true,
+          key: 'from',
+          render: (to) => (
+            <a onClick={() => _this.props.history.push('/Address?id='+to)} title={to}>
+              {to}
+            </a>
+          ),
+        },
+
+        {
+          title: 'To',
+          dataIndex: 'to',
+          ellipsis: true,
+          key: 'to',
+          render: (to) => (
+            <a onClick={() => _this.props.history.push('/Address?id='+to)} title={to}>
+              {to}
+            </a>
+          ),
+        },
+        {
+          title: 'Value',
+          dataIndex: 'amount',
+          key: 'amount',
+        },
+        // {
+        //   title: 'Txn Fee',
+        //   dataIndex: 'fee',
+        //   key: 'fee',
+        // },
+        {
+          title: 'Gas Price',
+          dataIndex: 'price',
+          key: 'price',
+        },
+      ],
     };
   }
-  getTransactionsListNoId = (page) => {
+  getTransactionsListNoId = (page,pageSize) => {
     let _this = this
-    request.get('/api/v1/home/txs?page='+page+'&offset=10').then(function(resData){
+    request.get('/api/v1/home/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({transactionsList:[]});
       for(let i in resData.data){
         resData.data[i].index = i+1
@@ -115,10 +121,10 @@ class Transactions extends Component {
       _this.setState({transactionsList:resData.data,transactionsTotal:resData.total});
     })
   }
-  getTransactionsListId= (id,page) => {
+  getTransactionsListId= (id,page,pageSize) => {
     let _this = this
     let data = []
-    request.get('/api/v1/blocks/'+id+'/txs?page='+page+'&offset=10').then(function(resData){
+    request.get('/api/v1/blocks/'+id+'/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({transactionsList:[]});
       for(let i in resData.data){
         resData.data[i].index = i+1
@@ -128,16 +134,34 @@ class Transactions extends Component {
   }
   paginationChange = (page, pageSize) => {
     console.log(page, pageSize)
+    this.setState({
+      current:page.current,
+      pageSize:page.pageSize
+    })
     if(this.state.isId){
-      this.getTransactionsListId(this.state.getTransactionsListId,page.current)
+      this.getTransactionsListId(this.state.getTransactionsListId,page.current,page.pageSize)
     }else{
-      this.getTransactionsListNoId(page.current)
+      this.getTransactionsListNoId(page.current,page.pageSize)
     }
   }
   onSearch = (value) => console.log(value);
   searchHandleChange = (value) => {
     this.setState({searchValue:value});
   };
+  componentDidUpdate(prevProps) {
+    let _this = this
+    console.log(this.props.location.search,'this.props.location.search')
+    console.log(prevProps.location.search,'prevProps.location.search')
+    if(JSON.stringify(this.props.location.search) !== JSON.stringify(prevProps.location.search)){
+      if(!this.props.location.search){
+        this.getTransactionsListNoId(_this.state.current,_this.state.pageSize)
+        this.setState({isId:false})
+      }else{
+        this.getTransactionsListId(_this.props.location.search.split("=")[1],_this.state.current,_this.state.pageSize)
+        this.setState({isId:true})
+      }
+    }
+  }
   render() {
     return (
       <div className="transactions-page">
@@ -150,15 +174,17 @@ class Transactions extends Component {
             width: '100%',
           }}>
             <div slot="title">
-              <h4>More than > 65,277,407 transactions found</h4>
+              <h4>More than > {this.state.transactionsTotal} transactions found</h4>
               <div>(Showing the last {this.state.transactionsTotal}k records)</div>
             </div>
           <Table
-            columns={columns}
+            columns={this.state.columns}
             dataSource={this.state.transactionsList}
             rowKey={(record) => record.index}
             pagination={{
               position: ['topRight', 'bottomRight'],
+              pageSize: this.state.pageSize,
+              current: this.state.current,
               total:this.state.transactionsTotal,
             }}
             onChange={this.paginationChange}

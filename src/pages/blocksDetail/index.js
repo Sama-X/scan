@@ -29,9 +29,9 @@ class BlocksDetail extends Component {
   };
   constructor (props) {
     super(props)
-    this.getBlockDetail(props.location.state.id)
+    this.getBlockDetail(props.location.search.split("=")[1])
     this.state = {
-      blockId:props.location.state.id,
+      blockId:props.location.search.split("=")[1],
       blocksDetail:{},
     };
   }
@@ -49,7 +49,7 @@ class BlocksDetail extends Component {
     })
   }
   jumpTransaction = (id) => {
-    this.props.history.push({pathname:'/transactions', state: { id: id } })
+    this.props.history.push('/transactions?id='+id)
   }
   render() {
     return (
@@ -87,7 +87,7 @@ class BlocksDetail extends Component {
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Transactions:</div>
                   <div className="transactionsDetailGeryItem">
-                    <span className="bgRed cursorClass" onClick={()=>this.jumpTransaction(this.state.blocksDetail.block_id)}>{this.state.blocksDetail.txs_total} transactions</span>  in this block
+                    <span className="bgRed cursorClass" onClick={()=>this.jumpTransaction(this.state.blocksDetail.block_id)}>{this.state.blocksDetail.txs_total} transactions&nbsp;&nbsp;</span>  in this block
                   </div>
               </div>
               <Divider/>

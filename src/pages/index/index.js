@@ -70,13 +70,13 @@ class Index extends Component {
     if(e.key == 'sub1'){
       this.props.history.push('/')
     }else if(e.key == '1'){
-      this.props.history.push('/Transactions')
+      this.props.history.push('/transactions')
     }else if(e.key == '2'){
-      this.props.history.push('/Pending')
+      this.props.history.push('/pending')
     }else if(e.key == '3'){
-      this.props.history.push('/Blocks')
+      this.props.history.push('/blocks')
     }else if(e.key == '4'){
-      this.props.history.push('/Accounts')
+      this.props.history.push('/accounts')
     }
   }
   componentDidUpdate(prevProps) {
@@ -99,7 +99,7 @@ class Index extends Component {
       <Layout>
         <Layout className="site-layout">
           <div className="headerAndContent" id="page-top" style={{height: "100vh",overflow:'scroll'}}>
-            <Header className="ant-layout-header" style={{ zIndex: 999, position: "fixed",width: "inherit", background:'white'}}>
+            <Header className="ant-layout-header" style={{ zIndex: 999, position: "fixed",width: "inherit", background:'white',height: 100}}>
               <div>
                 {
                   isPhone ?
@@ -140,7 +140,7 @@ class Index extends Component {
                   </Drawer>
                 </div>
                 :
-                <div style={{display:'flex',justifyContent: 'space-between',width:'90%',margin:'0 auto'}}>
+                <div className="homeWidth" style={{display:'flex',justifyContent: 'space-between',margin:'0 auto'}}>
                   <div className="logoImgBox">
                     <img className="logo2" src={require("../../assets/logo2.png")}/>
                   </div>
@@ -149,7 +149,7 @@ class Index extends Component {
                       mode="horizontal"
                       style={{
                         width: '180px',
-                        height: 'auto',
+                        // height: 'auto',
                       }}
                       items={items}
                       onClick={this.menuChange}
@@ -160,12 +160,12 @@ class Index extends Component {
               }
               </div>
             </Header>
-            <Content style={{ minHeight: "100vh",padding: '80px 0 0',textAlign: 'left', overflow: 'scroll'}}>
+            <Content style={{ minHeight: "95vh",padding: '80px 0 0',textAlign: 'left', overflow: 'scroll'}}>
               <RenderRoutes routes={routes}></RenderRoutes>
             </Content>
             <Footer className="footerBigBox" style={{ background:'none'}}>
               <div className="footerBox">
-                <Row>
+                <Row className="footerRow">
                   <Col className="footerLt" xs={{ span: 24}} lg={{ span: 12 }} style={{ display: 'flex'}}>
                     <img className="footerLeftLogo" src={require("../../assets/logo1.png")}/>
                     <div>
@@ -187,8 +187,8 @@ class Index extends Component {
                     </div> */}
                   </Col>
                 </Row>
-                <Divider style={{borderColor: '#e7eaf3'}}/>
-                <Row>
+                <Divider className="footerRow" style={{borderColor: '#e7eaf3',margin: '20px auto'}}/>
+                <Row className="footerRow">
                   <Col className="footerBot" xs={{ span: 24}} lg={{ span: 12 }} style={{ display: 'flex'}}>
                     <div>
                       {/* SnowTrace © 2023  (SAMATestnet-A) |  ⛏ Built by the same team behind

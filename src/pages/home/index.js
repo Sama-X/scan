@@ -109,7 +109,6 @@ class Home extends Component {
     let txsList = []
     let _this = this
     request.get('/api/v1/home/search?keyword='+e).then(function(resData){
-      console.log(resData,'ghjkl')
       if(resData.data){
         if(resData.data.address.length > 0){
           // addressList = resData.data.address
@@ -148,9 +147,6 @@ class Home extends Component {
     })
   }
   autoSelect = (value,option) => {
-    console.log(value,'va')
-    console.log(option,'op')
-    console.log(value.indexOf('blocks'),'op')
     if(value.indexOf('address') == 0){
       this.jumpAddress(option.label)
     }else if(value.indexOf('blocks') == 0){
@@ -160,13 +156,16 @@ class Home extends Component {
     }
   }
   jumpBlockDetail = (id) => {
-    this.props.history.push({pathname:'/blocksDetail', state: { id: id } })
+    this.props.history.push('/blocksDetail?id='+id)
+    // this.props.history.push({pathname:'/blocksDetail', state: { id: id } })
   }
   jumpTransactionDetail = (id) => {
-    this.props.history.push({pathname:'/transactionsDetail', state: { id: id } })
+    this.props.history.push('/transactionsDetail?id='+id)
+    // this.props.history.push({pathname:'/transactionsDetail', state: { id: id } })
   }
   jumpAddress = (id) => {
-    this.props.history.push({pathname:'/Address', state: { id: id } })
+    this.props.history.push('/Address?id='+id)
+    // this.props.history.push({pathname:'/Address', state: { id: id } })
   }
 
   componentDidMount() {
@@ -245,8 +244,8 @@ class Home extends Component {
                           </div>
                         </Col>
                         <Col xs={{ span: 11}} lg={{ span: 11 }} className="homeCenterItem">
-                          <div style={{display: 'flex'}}>Hash <span className="homeRedItem homeItemOne cursorClass"  onClick={() => this.jumpBlockDetail(item.block_id)}>{item.block_id}</span></div>
-                          <div className="homeGeryItem"><span className="homeRedItem">{item.txs_total} txns</span>in {item.txs_total} sec</div>
+                          <div style={{display: 'flex'}}>Hash&nbsp;&nbsp;<span className="homeRedItem homeItemOne cursorClass"  onClick={() => this.jumpBlockDetail(item.block_id)}>{item.block_id}</span></div>
+                          <div className="homeGeryItem"><span className="homeRedItem">{item.txs_total} txns&nbsp;&nbsp;</span>in {item.txs_total} sec</div>
                         </Col>
                         {/* <Col xs={{ span: 7}} lg={{ span: 5}} className="homeRightItem">
                           <div>
@@ -289,8 +288,8 @@ class Home extends Component {
                           </div>
                         </Col>
                         <Col xs={{ span: 11}} lg={{ span: 11 }} className="homeCenterItem">
-                          <div style={{display: 'flex'}}>From： <span onClick={()=>this.jumpAddress(item.from)} className="homeRedItem homeItemOne cursorClass">{item.from}</span></div>
-                          <div style={{display: 'flex'}}>To： <span onClick={()=>this.jumpAddress(item.to)} className="homeRedItem homeItemOne cursorClass">{item.to}</span></div>
+                          <div style={{display: 'flex'}}>From&nbsp;&nbsp;<span onClick={()=>this.jumpAddress(item.from)} className="homeRedItem homeItemOne cursorClass">{item.from}</span></div>
+                          <div style={{display: 'flex'}}>To&nbsp;&nbsp;<span onClick={()=>this.jumpAddress(item.to)} className="homeRedItem homeItemOne cursorClass">{item.to}</span></div>
                         </Col>
                         <Col xs={{ span: 5}} lg={{ span: 5}} className="homeRightItem">
                           <div>

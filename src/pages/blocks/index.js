@@ -7,62 +7,67 @@ import {withRouter} from "react-router-dom";
 
 
 let request = new Request({});
-const columns = [
-  {
-    title: 'Block',
-    dataIndex: 'height',
-    key: 'height',
-    render: (text) => <Link to={{ pathname: '/blocksDetail', state: { id: text } }}>{text ? text : 'null'}</Link>,
-  },
-  {
-    title: 'Date Time (UTC)',
-    dataIndex: 'block_time',
-    key: 'block_time',
-  },
-  {
-    title: 'Txn',
-    dataIndex: 'txs_total',
-    key: 'txs_total',
-  },
-  {
-    title: 'Hash',
-    dataIndex: 'block_id',
-    key: 'block_id',
-    render: (text) => <Link to={{ pathname: '/blocksDetail', state: { id: text } }}>{text ? text : 'null'}</Link>,
-  },
-  // {
-  //   title: 'Gas Used',
-  //   dataIndex: 'cost',
-  //   key: 'cost',
-  // },
-  {
-    title: 'Gas Limit',
-    dataIndex: 'cost',
-    key: 'cost',
-  },
-  {
-    title: 'Burned (SAMA)',
-    dataIndex: 'price',
-    key: 'price',
-  },
-];
 class Blocks extends Component {
   state = {
     blocksList:[],
     blocksTotal: 0,
+    current:1,
+    pageSize:20,
   };
   constructor (props) {
     super(props)
-    this.getBlockList(1)
+    let _this = this
+    this.getBlockList(_this.state.current,_this.state.pageSize)
     this.state = {
       blocksList:[],
       blocksTotal: 0,
+      current:1,
+      pageSize:20,
+      columns:[
+        {
+          title: 'Block',
+          dataIndex: 'height',
+          key: 'height',
+          render: (text) => <a onClick={() => _this.props.history.push('/blocksDetail?id='+text)}>{text}</a>,
+        },
+        {
+          title: 'Date Time (UTC)',
+          dataIndex: 'block_time',
+          key: 'block_time',
+        },
+        {
+          title: 'Txn',
+          dataIndex: 'txs_total',
+          key: 'txs_total',
+        },
+        {
+          title: 'Hash',
+          dataIndex: 'block_id',
+          key: 'block_id',
+          render: (text) => <a onClick={() => _this.props.history.push('/blocksDetail?id='+text)}>{text}</a>,
+        },
+        // {
+        //   title: 'Gas Used',
+        //   dataIndex: 'cost',
+        //   key: 'cost',
+        // },
+        {
+          title: 'Gas Limit',
+          dataIndex: 'cost',
+          key: 'cost',
+        },
+        {
+          title: 'Burned (SAMA)',
+          dataIndex: 'price',
+          key: 'price',
+        },
+      ],
     };
   }
-  getBlockList = function(page) {
+  getBlockList = function(page,pageSize) {
     let _this = this
 
-    request.get('/api/v1/home/blocks?page='+page+'&offset=10').then(function(resData){
+    request.get('/api/v1/home/blocks?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({blocksList:[]})
       for(let i in resData.data){
         resData.data[i].index = i+1
@@ -72,7 +77,11 @@ class Blocks extends Component {
   }
   paginationChange = (page, pageSize) => {
     console.log(page, pageSize)
-    this.getBlockList(page.current)
+    this.setState({
+      current:page.current,
+      pageSize:page.pageSize
+    })
+    this.getBlockList(page.current,page.pageSize)
   }
   render() {
     return (
@@ -91,11 +100,13 @@ class Blocks extends Component {
               <div>(Total of {this.state.blocksTotal} blocks)</div>
             </div>
           <Table
-            columns={columns}
+            columns={this.state.columns}
             dataSource={this.state.blocksList}
             rowKey={(record) => record.index}
             pagination={{
               position: ['topRight', 'bottomRight'],
+              pageSize: this.state.pageSize,
+              current: this.state.current,
               total:this.state.blocksTotal,
             }}
             onChange={this.paginationChange}
