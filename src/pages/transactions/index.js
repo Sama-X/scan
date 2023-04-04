@@ -95,8 +95,8 @@ class Transactions extends Component {
         },
         {
           title: 'Value',
-          dataIndex: 'amount',
-          key: 'amount',
+          dataIndex: 'amountLocal',
+          key: 'amountLocal',
         },
         // {
         //   title: 'Txn Fee',
@@ -116,6 +116,7 @@ class Transactions extends Component {
     request.get('/api/v1/home/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({transactionsList:[]});
       for(let i in resData.data){
+        resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
         resData.data[i].index = i+1
       }
       _this.setState({transactionsList:resData.data,transactionsTotal:resData.total});
@@ -127,6 +128,7 @@ class Transactions extends Component {
     request.get('/api/v1/blocks/'+id+'/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({transactionsList:[]});
       for(let i in resData.data){
+        resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
         resData.data[i].index = i+1
       }
       _this.setState({transactionsList:resData.data,transactionsId:id,transactionsTotal:resData.total});
@@ -150,8 +152,6 @@ class Transactions extends Component {
   };
   componentDidUpdate(prevProps) {
     let _this = this
-    console.log(this.props.location.search,'this.props.location.search')
-    console.log(prevProps.location.search,'prevProps.location.search')
     if(JSON.stringify(this.props.location.search) !== JSON.stringify(prevProps.location.search)){
       if(!this.props.location.search){
         this.getTransactionsListNoId(_this.state.current,_this.state.pageSize)

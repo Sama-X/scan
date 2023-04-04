@@ -100,13 +100,13 @@ class Address extends Component {
         },
         {
           title: 'Value',
-          dataIndex: 'amount',
-          key: 'amount',
-          render: (to) => (
-            <span>
-              {to.toLocaleString()}
-            </span>
-          ),
+          dataIndex: 'amountLocal',
+          key: 'amountLocal',
+          // render: (to) => (
+          //   <span>
+          //     {to.toLocaleString()}
+          //   </span>
+          // ),
         },
         {
           title: 'Txn Fee',
@@ -140,6 +140,8 @@ class Address extends Component {
     request.get('/api/v1/wallet/'+id+'/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({addressBottomDetail:[]})
       for(let i in resData.data){
+
+        resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
         resData.data[i].index = i+1
       }
       _this.setState({addressBottomDetail:resData.data,addressBottomTotal:resData.total});
@@ -156,6 +158,13 @@ class Address extends Component {
   jumpBlockDetail = (id) => {
     this.props.history.push('/blocksDetail?id='+id)
     // this.props.history.push({pathname:'/blocksDetail', state: { id: id } })
+  }
+  componentDidUpdate(prevProps) {
+    let _this = this
+    if(JSON.stringify(this.props.location.search) !== JSON.stringify(prevProps.location.search)){
+      _this.getAddressTopDetail(_this.props.location.search.split("=")[1])
+      _this.setState({addressId:_this.props.location.search.split("=")[1]})
+    }
   }
   render() {
     let info = navigator.userAgent;
