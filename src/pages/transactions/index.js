@@ -116,7 +116,14 @@ class Transactions extends Component {
     request.get('/api/v1/home/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({transactionsList:[]});
       for(let i in resData.data){
-        resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+        if(resData.data[i].amount){
+          if(resData.data[i].amount < 1000){
+            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000 : 0
+          }else{
+            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+          }
+        }
+        // resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
         resData.data[i].index = i+1
       }
       _this.setState({transactionsList:resData.data,transactionsTotal:resData.total});
@@ -128,7 +135,14 @@ class Transactions extends Component {
     request.get('/api/v1/blocks/'+id+'/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({transactionsList:[]});
       for(let i in resData.data){
-        resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+        if(resData.data[i].amount){
+          if(resData.data[i].amount < 1000){
+            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000 : 0
+          }else{
+            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+          }
+        }
+        // resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
         resData.data[i].index = i+1
       }
       _this.setState({transactionsList:resData.data,transactionsId:id,transactionsTotal:resData.total});

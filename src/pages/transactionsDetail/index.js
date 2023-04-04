@@ -36,7 +36,11 @@ class TransactionsDetail extends Component {
     request.get('/api/v1/txs/'+id).then(function(resData){
       resData.data.amountLocal = 0
       if(resData.data.amount){
-        resData.data.amountLocal = resData.data.amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2')
+        if(resData.data.amount < 1000){
+          resData.data.amountLocal = resData.data.amount ? resData.data.amount/1000 : 0
+        }else{
+          resData.data.amountLocal = resData.data.amount ? resData.data.amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data.amount
+        }
       }
       _this.setState({transactionsDetail:resData.data,transactionsId:id});
     })

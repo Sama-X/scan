@@ -130,7 +130,12 @@ class Address extends Component {
     let _this = this
     request.get('/api/v1/wallet/'+id).then(function(resData){
       _this.getAddressBottomDetail(id,_this.state.current,_this.state.pageSize)
-      let localNumber = resData.data.balance.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2')
+      let localNumber = 0
+      if(resData.data.balance < 1000){
+        localNumber = resData.data.balance ? resData.data.balance/1000 : 0
+      }else{
+        localNumber = resData.data.balance.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2')
+      }
 
       _this.setState({addressTopDetail:resData.data,addressId:id,balanceValue:localNumber});
     })
@@ -140,8 +145,11 @@ class Address extends Component {
     request.get('/api/v1/wallet/'+id+'/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({addressBottomDetail:[]})
       for(let i in resData.data){
-
-        resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+        if(resData.data[i].amount < 1000){
+          resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000 : 0
+        }else{
+          resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+        }
         resData.data[i].index = i+1
       }
       _this.setState({addressBottomDetail:resData.data,addressBottomTotal:resData.total});
