@@ -70,6 +70,7 @@ class Home extends Component {
   };
   constructor (props) {
     super(props)
+    this.getSummaryInfo()
     this.getBlockList()
     this.getTransactionsList()
     this.state = {
@@ -78,12 +79,27 @@ class Home extends Component {
       transactionsList:[],
       autoList:[],
       timer: null,
+      summaryInfo: {"wallets": 0, "validators": 0, "auditors": 0,  "workers": 0, "transactions": 0},
     };
   }
   onSearch = (value) => console.log(value);
   searchHandleChange = (value) => {
     this.setState({searchValue:value});
   };
+  getSummaryInfo = function() {
+    let _this = this
+    request.get('/api/v1/home/info').then(function(resData){
+      console.log(resData.data);
+         let tmp = {
+          wallets: resData.data.walletTotal,
+          auditors: resData.data.auditorTotal,
+          transactions: resData.data.transTotal,
+          workers: resData.data.workTotal,
+          validators: resData.data.validatorTotal,
+         }
+        _this.setState({summaryInfo: tmp});
+    })
+  }
   getBlockList = function() {
     let _this = this
     request.get('/api/v1/home/blocks?page=1&offset=20').then(function(resData){
@@ -175,6 +191,7 @@ class Home extends Component {
   componentDidMount() {
     this.state.timer = setInterval(() => {
       // this.setState({blocksList:[],transactionsList:[]})
+      this.getSummaryInfo()
       this.getBlockList()
       this.getTransactionsList()
       this.setState(() => ({
@@ -219,6 +236,30 @@ class Home extends Component {
               <Input.Search size="large" placeholder="Search by Address / Txn Hash / Block / Token" />
             </AutoComplete>
           </div>
+          <div className='homeSummaryList'>
+            <div className='homeSummaryItem'>
+              <div className='homeSummaryKey'>Transactions</div>
+              <div className='homeSummaryValue'>{this.state.summaryInfo.transactions}</div>
+            </div>
+            <div className='homeSummaryItem'>
+              <div className='homeSummaryKey'>Wallets</div>
+              <div className='homeSummaryValue'>{this.state.summaryInfo.wallets}</div>
+            </div>
+            <div className='homeSummaryItem'>
+              <div className='homeSummaryKey'>Validators</div>
+              <div className='homeSummaryValue'>{this.state.summaryInfo.validators}</div>
+            </div>
+            <div className='homeSummaryItem'>
+              <div className='homeSummaryKey'>Auditors</div>
+              <div className='homeSummaryValue'>{this.state.summaryInfo.auditors}</div>
+            </div>
+            <div className='homeSummaryItem'>
+              <div className='homeSummaryKey'>Workers</div>
+              <div className='homeSummaryValue'>{this.state.summaryInfo.workers}</div>
+            </div>
+
+          </div>
+
           {/* <Search className='homeSearchInput' addonBefore={
 
           } onSearch={this.onSearch} allowClear placeholder="Search by Address / Txn Hash / Block / Token" /> */}

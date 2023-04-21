@@ -38,6 +38,33 @@
     height: 40px;
     width: 40px;
 }
+
+.homeSummaryList {
+    color:#e84142;
+    width: 90%;
+    border: 1px solid green;
+    margin: 0 auto;
+    display: flex;
+    justify-content:space-between;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 50px;
+    font-size: 14px;
+
+}
+
+
+.homeSummaryKey {
+    color: rgb(153, 153, 153);
+}
+
+
+.homeSummaryValue {
+    color: #e84142;
+    margin-top:5px;
+}
+
 :where(.css-dev-only-do-not-override-1me4733).ant-input-search >.ant-input-group >.ant-input-group-addon:last-child .ant-input-search-button:not(.ant-btn-primary):hover{
     color: white;
 }
