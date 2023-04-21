@@ -79,7 +79,7 @@ class Home extends Component {
       transactionsList:[],
       autoList:[],
       timer: null,
-      summaryInfo: {"wallets": 0, "validators": 0, "auditors": 0,  "workers": 0, "transactions": 0},
+      summaryInfo: {"accounts": 0, "validators": 0, "auditors": 0,  "workers": 0, "transactions": 0},
     };
   }
   onSearch = (value) => console.log(value);
@@ -91,7 +91,7 @@ class Home extends Component {
     request.get('/api/v1/home/info').then(function(resData){
       console.log(resData.data);
          let tmp = {
-          wallets: resData.data.walletTotal,
+          accounts: resData.data.walletTotal,
           auditors: resData.data.auditorTotal,
           transactions: resData.data.transTotal,
           workers: resData.data.workTotal,
@@ -242,8 +242,8 @@ class Home extends Component {
               <div className='homeSummaryValue'>{this.state.summaryInfo.transactions}</div>
             </div>
             <div className='homeSummaryItem'>
-              <div className='homeSummaryKey'>Wallets</div>
-              <div className='homeSummaryValue'>{this.state.summaryInfo.wallets}</div>
+              <div className='homeSummaryKey'>Accounts</div>
+              <div className='homeSummaryValue'>{this.state.summaryInfo.accounts}</div>
             </div>
             <div className='homeSummaryItem'>
               <div className='homeSummaryKey'>Validators</div>
