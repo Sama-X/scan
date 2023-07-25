@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Request from '../../request.ts';
 import {} from "react-router-dom";
 import { UserOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
 
 
 let request = new Request({});
@@ -82,6 +83,16 @@ class Home extends Component {
       summaryInfo: {"accounts": 0, "validators": 0, "auditors": 0,  "workers": 0, "transactions": 0},
     };
   }
+
+  suffix = (
+    <SearchOutlined
+      style={{
+        fontSize: 16,
+        color: '#000',
+      }}
+    />
+  );
+
   onSearch = (value) => console.log(value);
   searchHandleChange = (value) => {
     this.setState({searchValue:value});
@@ -188,6 +199,8 @@ class Home extends Component {
     // this.props.history.push({pathname:'/Address', state: { id: id } })
   }
 
+  
+
   componentDidMount() {
     this.state.timer = setInterval(() => {
       // this.setState({blocksList:[],transactionsList:[]})
@@ -210,7 +223,7 @@ class Home extends Component {
     return (
       <div className="home-page">
         <div className="homeSearchBox">
-          <h2>Sama Testnet Explorer</h2>
+          <h2>SIGTAC Chain Explorer</h2>
           <div className='homeSearchInput'>
             {/* <Select
               className='homeSearchSelect'
@@ -233,7 +246,7 @@ class Home extends Component {
                 onChange={this.changeAutoList}
                 onSelect={this.autoSelect}
               >
-              <Input.Search size="large" placeholder="Search by Address / Txn Hash / Block / Token" />
+              <Input size="large" placeholder="Search by Address / Txn Hash / Block / Token" suffix={this.suffix} />
             </AutoComplete>
           </div>
           <div className='homeSummaryList'>
