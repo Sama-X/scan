@@ -189,7 +189,7 @@ class Index extends Component {
                     </div> */}
                   </Col>
                 </Row>
-                <Divider className="footerRow" style={{borderColor: '#e7eaf3',margin: '20px auto'}}/>
+                <Divider className="footerRow" style={{borderColor: '#FFFFFF99',margin: '20px auto'}}/>
                 <Row className="footerRow">
                   <Col className="footerBot" xs={{ span: 24}} lg={{ span: 12 }} style={{ display: 'flex'}}>
                     <div>
