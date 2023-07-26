@@ -284,8 +284,12 @@ class Home extends Component {
               bordered={false}
               style={{
                 width: '100%',
+                backgroundColor: '#1c1c1c',
+                'border-top-left-radius': '8px',
+                'border-top-right-radius': '8px',
               }}
-              actions={[<Button style={{width: '90%',background:'rgba(232,65,66,.1)'}} danger type="text"><Link to="/blocks" style={{color:'#ff4d4f'}}>View all blocks</Link></Button>]}
+              headStyle={{color: '#fff', 'border-bottom-color': '#000'}}
+              bodyStyle={{ 'border-radius': 'none'}}
             >
               <div className="homeItemBigBox">
               {
@@ -302,7 +306,7 @@ class Home extends Component {
                           </div>
                         </Col>
                         <Col xs={{ span: 24}} lg={{ span: 11 }} className="homeCenterItem">
-                          <div style={{display: 'flex'}}>Hash&nbsp;&nbsp;<span className="homeRedItem homeItemOne cursorClass"  onClick={() => this.jumpBlockDetail(item.block_id)}>{item.block_id}</span></div>
+                          <div style={{display: 'flex', color: '#FFFFFF99'}}>Hash&nbsp;&nbsp;<span className="homeRedItem homeItemOne cursorClass"  onClick={() => this.jumpBlockDetail(item.block_id)}>{item.block_id}</span></div>
                           <div className="homeGeryItem"><span className="homeRedItem">{item.txs_total} txns&nbsp;&nbsp;</span>in {item.txs_total} sec</div>
                         </Col>
                         {/* <Col xs={{ span: 7}} lg={{ span: 5}} className="homeRightItem">
@@ -313,7 +317,7 @@ class Home extends Component {
                           </div>
                         </Col> */}
                       </Row>
-                      <Divider/>
+                      <Divider style={{backgroundColor: '#000'}}/>
                     </div>
                   ))
                 :''
@@ -322,6 +326,7 @@ class Home extends Component {
               </div>
 
             </Card>
+            <div className='card-actions-container'><div><Link to="/blocks" style={{color:'#fff'}}>View all blocks</Link></div></div>
           </Col>
           <Col xs={{ span: 24 }} lg={{ span: 11,offset:2 }}>
           <Card
@@ -329,8 +334,10 @@ class Home extends Component {
               bordered={false}
               style={{
                 width: '100%',
+                backgroundColor: '#1c1c1c',
+                'border-radius': '8px 8px 0 0',
               }}
-              actions={[<Button style={{width: '90%',background:'rgba(232,65,66,.1)'}} danger type="text"><Link to="/transactions" style={{color:'#ff4d4f'}}>View all transactions</Link></Button>]}
+              headStyle={{color: '#fff', 'border-bottom-color': '#000'}}
             >
               <div className="homeItemBigBox">
               {
@@ -346,16 +353,16 @@ class Home extends Component {
                           </div>
                         </Col>
                         <Col xs={{ span: 24}} lg={{ span: 11 }} className="homeCenterItem">
-                          <div style={{display: 'flex'}}>From&nbsp;&nbsp;<span onClick={()=>this.jumpAddress(item.from)} className="homeRedItem homeItemOne cursorClass">{item.from}</span></div>
-                          <div style={{display: 'flex'}}>To&nbsp;&nbsp;<span onClick={()=>this.jumpAddress(item.to)} className="homeRedItem homeItemOne cursorClass">{item.to}</span></div>
+                          <div style={{display: 'flex', color: '#FFFFFF99'}}>From&nbsp;&nbsp;<span onClick={()=>this.jumpAddress(item.from)} className="homeRedItem homeItemOne cursorClass">{item.from}</span></div>
+                          <div style={{display: 'flex', color: '#FFFFFF99'}}>To&nbsp;&nbsp;<span onClick={()=>this.jumpAddress(item.to)} className="homeRedItem homeItemOne cursorClass">{item.to}</span></div>
                         </Col>
                         <Col xs={{ span: 10}} lg={{ span: 5}} className="homeRightItem">
                           <div>
-                            {item.amountLocal} SAMA
+                            {item.amountLocal} DND
                           </div>
                         </Col>
                       </Row>
-                      <Divider/>
+                      <Divider style={{backgroundColor: '#000'}}/>
                     </div>
                   ))
                   :''
@@ -363,6 +370,7 @@ class Home extends Component {
 
               </div>
             </Card>
+            <div className='card-actions-container'><div><Link to="/transactions" style={{color:'#fff'}}>View all transactions</Link></div></div>
           </Col>
         </Row>
       </div>

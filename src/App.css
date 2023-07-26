@@ -77,19 +77,22 @@
 .cursorClass{
   cursor: pointer;
 }
-.testnet{
+
+.testnet {
   width:max-content;
   padding: 2px 5px;
   margin-left: 10px;
-  color: #e84142;
+  margin-top: 32px;
   height: 30px;
   line-height: 25px;
-  margin-top: 35px;
   border-radius: 5px;
-  background: rgba(232,65,66,.1);
   border-color: transparent;
+  color: #ECA55B;
+  background: #ECA55B1A;
   cursor: pointer;
 }
+
+
 .testnet:hover{
   color: #000;
 }

@@ -171,7 +171,7 @@ class Index extends Component {
                   <Col className="footerLt" xs={{ span: 24}} lg={{ span: 12 }} style={{ display: 'flex'}}>
                     <img className="footerLeftLogo" src={require("../../assets/logo1.png")}/>
                     <div>
-                      Powered By SAMA
+                      Powered By SIGTAC
                     </div>
                   </Col>
                   <Col className="footerGt" xs={{ span: 24 }} lg={{ span: 6,offset:6  }} style={{display:'flex',justifyContent:'end'}}>
@@ -197,7 +197,7 @@ class Index extends Component {
                       <span className="footerBotRed">Etherscan</span>
                       | Donate
                       <HeartFilled style={{color: '#e84142', margin:"5px 5px 0"}}/> */}
-                      Copyright © 2022 SAMA.NET All rights reserved.
+                      Copyright © 2023 SIGTAC.NET All rights reserved.
                     </div>
                   </Col>
                   <Col className="footerBot" xs={{ span: 24 }} lg={{ span: 6,offset:6  }} style={{display:'flex',justifyContent:'end'}}>
