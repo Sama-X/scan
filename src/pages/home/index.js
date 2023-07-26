@@ -285,11 +285,11 @@ class Home extends Component {
               style={{
                 width: '100%',
                 backgroundColor: '#1c1c1c',
-                'border-top-left-radius': '8px',
-                'border-top-right-radius': '8px',
+                borderTopLeftRadius: '8px',
+                borderTopRightRadius: '8px',
               }}
-              headStyle={{color: '#fff', 'border-bottom-color': '#000'}}
-              bodyStyle={{ 'border-radius': 'none'}}
+              headStyle={{color: '#fff', 'borderBottomColor': '#000'}}
+              bodyStyle={{ 'borderRadius': 'none'}}
             >
               <div className="homeItemBigBox">
               {
@@ -335,9 +335,9 @@ class Home extends Component {
               style={{
                 width: '100%',
                 backgroundColor: '#1c1c1c',
-                'border-radius': '8px 8px 0 0',
+                borderRadius: '8px 8px 0 0',
               }}
-              headStyle={{color: '#fff', 'border-bottom-color': '#000'}}
+              headStyle={{color: '#fff', borderBottomColor: '#000'}}
             >
               <div className="homeItemBigBox">
               {
