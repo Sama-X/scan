@@ -5,6 +5,7 @@
 .headerAndContent{
     width: 1440px;
     margin: 0 auto;
+    background-color: #000;
 }
 .headerAndContent, .ant-layout-content{
     width: -webkit-fill-available !important;

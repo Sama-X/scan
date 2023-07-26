@@ -6,6 +6,7 @@
 .transactionsDetailHeaderBox{
     display: flex;
     justify-content:space-between;
+    color: #fff;
 }
 .transactionsDetailHeaderNumber{
     background-color: rgba(219,154,4,.1);
@@ -25,6 +26,19 @@
 :where(.css-dev-only-do-not-override-1me4733).ant-tabs .ant-tabs-ink-bar{
     background:#e84142;
 }
+
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #ECA55B !important;
+}
+
+.ant-tabs-ink-bar-animated {
+    background-color: #ECA55B !important;  
+}
+
+.ant-tabs-nav::before {
+    border-bottom: 1px solid #000 !important;
+}
+
 .transactionsDetailListBox{
     margin: 20px 0;
 }
@@ -32,6 +46,7 @@
     display: flex;
     justify-content:space-between;
     padding: 10px 0;
+    color: #fff;
 }
 .transactionsDetailBorder{
     border-bottom: 1px solid rgba(0,0,0,0.3);

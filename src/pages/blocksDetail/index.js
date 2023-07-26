@@ -70,6 +70,7 @@ class BlocksDetail extends Component {
           bordered={false}
           style={{
             width: '100%',
+            backgroundColor: '#1c1c1c'
           }}>
             <div slot="title">
               <Tabs defaultActiveKey="1" items={items} onChange={this.onChange} />
@@ -79,9 +80,9 @@ class BlocksDetail extends Component {
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Block Height:</div>
                   <div className="transactionsDetailGeryItem">
-                    <LeftCircleFilled onClick={()=>this.getBlockDetail(Number(this.state.blocksDetail.height)-1)} style={{color: '#3498db',background: 'rgba(52,152,219,.1)',borderColor: 'transparent',cursor:'pointer',}}/>
+                    <LeftCircleFilled onClick={()=>this.getBlockDetail(Number(this.state.blocksDetail.height)-1)} style={{color: '#ECA55B',background: 'rgba(52,152,219,.1)',borderColor: 'transparent',cursor:'pointer',}}/>
                     {this.state.blocksDetail.height}
-                    <RightCircleFilled onClick={()=>this.getBlockDetail(Number(this.state.blocksDetail.height)+1)} style={{color: '#3498db',background: 'rgba(52,152,219,.1)',borderColor: 'transparent',cursor:'pointer',marginLeft:'10px',}}/>
+                    <RightCircleFilled onClick={()=>this.getBlockDetail(Number(this.state.blocksDetail.height)+1)} style={{color: '#ECA55B',background: 'rgba(52,152,219,.1)',borderColor: 'transparent',cursor:'pointer',marginLeft:'10px',}}/>
                   </div>
               </div>
               <Divider/>
