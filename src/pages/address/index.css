@@ -5,6 +5,7 @@
 }
 .addressHeaderBox{
     display: flex;
+    color: #fff;
     /* justify-content:space-between; */
 }
 .addressHeaderNumber{
@@ -28,10 +29,14 @@
 .addressListBox{
     margin: 20px 0;
 }
+
+.addressMoreInfo {
+    border-bottom: 1px solid #000;
+}
 .addressItemBigBox{
     display: flex;
     justify-content:space-between;
-    border-bottom: 1px solid rgba(0,0,0,0.3);
+    /* border-bottom: 1px solid rgba(0,0,0,0.3); */
     padding: 10px 0;
 }
 .addressItemBigBox div{

@@ -57,7 +57,7 @@ class Blocks extends Component {
           key: 'cost',
         },
         {
-          title: 'Burned (SAMA)',
+          title: 'Burned (DND)',
           dataIndex: 'price',
           key: 'price',
         },
@@ -91,7 +91,7 @@ class Blocks extends Component {
         <div className="blocksHeaderBox">
           <h2>Blocks</h2>
           <div className="blocksHeaderNumber">
-            <span>🔥 Burnt Fees: 0 SAMA</span>
+            <span>🔥 Burnt Fees: 0 DND</span>
           </div>
         </div>
         <Card

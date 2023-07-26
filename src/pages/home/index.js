@@ -313,7 +313,7 @@ class Home extends Component {
                           <div>
                             🔥 0
                             <b>.</b>
-                            03105 SAMA
+                            03105 DND
                           </div>
                         </Col> */}
                       </Row>

@@ -134,7 +134,7 @@ class TransactionsDetail extends Component {
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Value:</div>
                   <div className="transactionsDetailGeryItem" style={{display:"flex",flexWrap:'wrap'}}>
-                    <span className="bgGrey">{this.state.transactionsDetail.amountLocal} SAMA </span>
+                    <span className="bgGrey">{this.state.transactionsDetail.amountLocal} DND </span>
                     <span>(${this.state.transactionsDetail.amountLocal})</span>
                   </div>
               </div>
@@ -145,7 +145,7 @@ class TransactionsDetail extends Component {
               <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Gas Price:</div>
-                  <div className="transactionsDetailGeryItem">{this.state.transactionsDetail.price}SAMA</div>
+                  <div className="transactionsDetailGeryItem">{this.state.transactionsDetail.price}DND</div>
               </div>
               {/* <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Gas Limit & Usage by Txn:</div>
@@ -159,7 +159,7 @@ class TransactionsDetail extends Component {
               </div> */}
               {/* <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Burnt Fees:</div>
-                  <div className="transactionsDetailGeryItem"><span className="bgOrange">🔥 Burnt: 0.001382725 SAMA</span></div>
+                  <div className="transactionsDetailGeryItem"><span className="bgOrange">🔥 Burnt: 0.001382725 DND</span></div>
               </div> */}
               {/* <Divider/>
               <div className="transactionsDetailItemBigBox">

@@ -192,16 +192,21 @@ class Address extends Component {
         <Row className="addressListBox">
           <Col xs={{ span: 24}} lg={{ span: 11 }}>
             <Card
-              title="Overview"
               bordered={false}
+              headStyle={{color: '#fff'}}
               style={{
                 width: '100%',
                 marginBottom: '20px',
+                backgroundColor: '#1c1c1c',
+                color: '#fff'
               }}
             >
+              <div className="addressItemBigBox addressMoreInfo">
+              Overview
+              </div>
               <div className="addressItemBigBox">
                   <div className="addressRedItem">Balance:</div>
-                  <div className="addressGeryItem">{this.state.balanceValue}  SAMA</div>
+                  <div className="addressGeryItem">{this.state.balanceValue}  DND</div>
               </div>
               <div className="addressItemBigBox" style={{height:20,border:'none'}}></div>
               <div className="addressItemBigBox" style={{height:20,border:'none'}}></div>
@@ -210,13 +215,18 @@ class Address extends Component {
           </Col>
           <Col xs={{ span: 24 }} lg={{ span: 11,offset:2 }}>
           <Card
-              title="More Info"
               bordered={false}
+              headStyle={{color: '#fff'}}
               style={{
                 width: '100%',
                 marginBottom: '20px',
+                backgroundColor: '#1c1c1c',
+                color: '#fff'
               }}
             >
+              <div className="addressItemBigBox addressMoreInfo">
+                  More Info
+              </div>
               <div className="addressItemBigBox">
                   <div className="addressRedItem">My Name Tag:</div>
                   <div className="addressGeryItem">Not Available</div>
@@ -244,17 +254,18 @@ class Address extends Component {
           bordered={false}
           style={{
             width: '100%',
+            backgroundColor: '#1c1c1c'
           }}>
             <div slot="title">
               <Tabs defaultActiveKey="1" items={items} onChange={this.onChange} />
-              <h4>Latest {this.state.addressBottomTotal} from a total of {this.state.addressBottomTotal} transactions</h4>
+              <h4 style={{color: '#FFFFFF99'}}>Latest {this.state.addressBottomTotal} from a total of {this.state.addressBottomTotal} transactions</h4>
             </div>
           <Table
             columns={this.state.columns}
             dataSource={this.state.addressBottomDetail}
             rowKey={(record) => record.index}
             pagination={{
-              position: ['topRight', 'bottomRight'],
+              position: ['bottomRight'],
               pageSize: this.state.pageSize,
               current: this.state.current,
               total:this.state.addressBottomTotal,
