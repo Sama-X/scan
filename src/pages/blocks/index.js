@@ -89,29 +89,32 @@ class Blocks extends Component {
     return (
       <div className="blocks-page" style={{padding: isPhone ? '20px 0' : '80px 0'}}>
         <div className="blocksHeaderBox">
-          <h2>Blocks</h2>
+          <h2 style={{color: '#fff'}}>Blocks</h2>
           <div className="blocksHeaderNumber">
-            <span>🔥 Burnt Fees: 0 DND</span>
+            <span style={{color: '#fff'}}>🔥 Burnt Fees: 0 DND</span>
           </div>
         </div>
         <Card
           bordered={false}
           style={{
             width: '100%',
+            backgroundColor: '#1c1c1c'
           }}>
             <div slot="title">
               {/* <h4>Block  #20413166 to  #20413190 </h4> */}
-              <div>(Total of {this.state.blocksTotal} blocks)</div>
+              <div style={{color: '#FFFFFF99'}}>(Total of {this.state.blocksTotal} blocks)</div>
             </div>
           <Table
+
             columns={this.state.columns}
             dataSource={this.state.blocksList}
             rowKey={(record) => record.index}
             pagination={{
-              position: ['topRight', 'bottomRight'],
+              position: ['bottomRight'],
               pageSize: this.state.pageSize,
               current: this.state.current,
               total:this.state.blocksTotal,
+              showSizeChanger: false,
             }}
             scroll={{
               x: 1300,
