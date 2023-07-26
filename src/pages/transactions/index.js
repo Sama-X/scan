@@ -188,20 +188,25 @@ class Transactions extends Component {
           bordered={false}
           style={{
             width: '100%',
+            backgroundColor: '#1c1c1c',
+            color: '#FFFFFF99'
           }}>
             <div slot="title">
-              <h4>More than > {this.state.transactionsTotal} transactions found</h4>
+              <h4>More than &gt; {this.state.transactionsTotal} transactions found</h4>
               <div>(Showing the last {this.state.transactionsTotal}k records)</div>
             </div>
           <Table
+            bordered={false}
             columns={this.state.columns}
             dataSource={this.state.transactionsList}
             rowKey={(record) => record.index}
             pagination={{
-              position: ['topRight', 'bottomRight'],
+              position: ['bottomRight'],
               pageSize: this.state.pageSize,
               current: this.state.current,
               total:this.state.transactionsTotal,
+              size: 'small',
+              showSizeChanger: false,
             }}
             scroll={{
               x: 1300,
