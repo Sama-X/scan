@@ -10,14 +10,26 @@
     margin: 0 auto;
     background: #000;
     padding: 100px 0;
+    background-image: url(../../assets/contentBg.png);
+    background-repeat:no-repeat;
+    background-size: 100% 334px;
 }
-.homeSearchBox h2{
-    text-align: center;
+.ant-input {
+    background-color: #1c1c1c;
     color: #fff;
 }
+
+.ant-input::placeholder {
+    color: gray;
+}
+
+.homeSearchBox h2{
+    color: #fff;
+    margin-left: 5%;
+}
 .homeSearchInput{
+    margin-left: 5%;
     width: 1000px;
-    margin: 20px auto;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -195,6 +207,6 @@
 }
 @media screen and (max-width: 1000px) {
     .homeSearchInput{
-        width: 60%;
+        width: 90%;
     }
 }

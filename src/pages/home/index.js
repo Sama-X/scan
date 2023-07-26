@@ -6,6 +6,7 @@ import Request from '../../request.ts';
 import {} from "react-router-dom";
 import { UserOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
+import searchIcon from '../../assets/search.svg'
 
 
 let request = new Request({});
@@ -85,12 +86,9 @@ class Home extends Component {
   }
 
   suffix = (
-    <SearchOutlined
-      style={{
-        fontSize: 16,
-        color: '#000',
-      }}
-    />
+    <div>
+      <img src={searchIcon} style={{width: '30px', height: '30px'}}></img>
+    </div>
   );
 
   onSearch = (value) => console.log(value);
@@ -241,12 +239,13 @@ class Home extends Component {
                 dropdownMatchSelectWidth={500}
                 style={{
                   width: "100%",
+                  border: "1px solid #000"
                 }}
                 options={this.state.autoList}
                 onChange={this.changeAutoList}
                 onSelect={this.autoSelect}
               >
-              <Input size="large" placeholder="Search by Address / Txn Hash / Block / Token" suffix={this.suffix} />
+              <Input size="large"  style={{backgroundColor: '#1c1c1c', border: '1px solid #fff', color: '#fff'}} placeholder="Search by Address / Txn Hash / Block / Token" suffix={this.suffix} />
             </AutoComplete>
           </div>
           <div className='homeSummaryList'>
