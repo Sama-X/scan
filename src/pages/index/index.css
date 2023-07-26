@@ -88,6 +88,10 @@
     border-bottom-color: #ECA55B !important;
   }
 
+  .ant-menu-submenu-title:hover, .ant-menu-item:hover{
+    color: #ECA55B !important;
+  }
+
 /* .ant-menu-item-selected .ant-menu-submenu::after {
     border-bottom-color: #ECA55B !important;
 } */

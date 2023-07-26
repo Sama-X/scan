@@ -11,6 +11,7 @@ import { RenderRoutes } from "../../router/allocation";
 import listJson from "../../json/list.js"
 
 import { Link } from 'react-router-dom';
+import headerBg from '../../assets/headerBg.png'
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -100,12 +101,15 @@ class Index extends Component {
       <Layout>
         <Layout className="site-layout">
           <div className="headerAndContent" id="page-top" style={{height: "100vh",overflow:'scroll'}}>
-            <Header className="ant-layout-header" style={{ zIndex: 999, position: "fixed",width: "inherit", background:'white',height: isPhone ? 70 : 100}}>
+            <Header className="ant-layout-header" style={{backgroundImage:`url(${headerBg})`, backgroundSize: 'cover', backgroundColor: '#000', zIndex: 999, position: "fixed",width: "inherit",height: isPhone ? 70 : 100}}>
               <div>
                 {
                   isPhone ?
                   <div className="headerNavBox">
+                    <div>
                     <img className="logo2" src={require("../../assets/logo2.png")} onClick={() => this.setState({collapsed: !collapsed})}/>
+                    <span style={{color: '#fff', fontSize: '16px', display: 'inline-block', marginLeft: '10px'}}>SIGTAC Network</span>
+                    </div>
                     <div
                         type="primary"
                         onClick={() => this.setState({collapsed: !collapsed})}
@@ -143,15 +147,19 @@ class Index extends Component {
                 </div>
                 :
                 <div className="homeWidth" style={{display:'flex',justifyContent: 'space-between',margin:'0 auto'}}>
-                  <div className="logoImgBox">
-                    <img className="logo2" src={require("../../assets/logo2.png")}/>
+                  <div className="logoImgBox" style={{marginTop: '10px'}}>
+                    <img className="logo2" style={{width: '36px', height: '36px'}} src={require("../../assets/logo2.png")}/>
+                    <span style={{color: '#fff', fontSize: '16px', display: 'inline-block', marginLeft: '10px'}}>SIGTAC Network</span>
                   </div>
                   <div style={{display:'flex',justifyContent: 'end'}}>
                     <Menu
                       mode="horizontal"
                       style={{
                         width: '180px',
-                        // height: 'auto',
+                        height: '80px',
+                        backgroundColor: '#000',
+                        color: '#fff',
+                        backgroundColor: 'transparent'
                       }}
                       items={items}
                       onClick={this.menuChange}
