@@ -73,6 +73,7 @@ class TransactionsDetail extends Component {
           bordered={false}
           style={{
             width: '100%',
+            backgroundColor: '#1c1c1c'
           }}>
             <div slot="title">
               <Tabs defaultActiveKey="1" items={items} onChange={this.onChange} />
@@ -107,7 +108,7 @@ class TransactionsDetail extends Component {
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Timestamp:</div>
                   <div className="transactionsDetailGeryItem">{this.state.transactionsDetail.block_time}</div>
               </div>
-              <Divider/>
+              <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />From:</div>
                   <div className="transactionsDetailGeryItem">
@@ -129,7 +130,7 @@ class TransactionsDetail extends Component {
                     }
                   </div>
               </div>
-              <Divider/>
+              <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Value:</div>
                   <div className="transactionsDetailGeryItem" style={{display:"flex",flexWrap:'wrap'}}>
@@ -141,7 +142,7 @@ class TransactionsDetail extends Component {
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Transaction Fee:</div>
                   <div className="transactionsDetailGeryItem">0.001382725 AVAX ($0.03)</div>
               </div> */}
-              <Divider/>
+              <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Gas Price:</div>
                   <div className="transactionsDetailGeryItem">{this.state.transactionsDetail.price}SAMA</div>
