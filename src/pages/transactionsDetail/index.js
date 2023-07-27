@@ -1,6 +1,6 @@
 import './index.css'
 import React, { Component } from "react";
-import { Card, Tooltip, Tabs, Divider, message } from "antd";
+import { Card, Tooltip, Tabs, Divider, message, Popover } from "antd";
 import { Link } from 'react-router-dom';
 import {
   CheckCircleFilled,
@@ -81,7 +81,7 @@ class TransactionsDetail extends Component {
             </div>
             <div slot="body">
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Transaction Hash:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="A TxHash or transaction hash is a unique 66-character identifier that is generated whenever a transaction is executed."><QuestionCircleOutlined /></Popover>Transaction Hash:</div>
                   <div className="transactionsDetailGeryItem">
                     <span className="longChang" style={{width: '200px'}}>{this.state.transactionsDetail.txid}</span>
                     {
@@ -91,13 +91,13 @@ class TransactionsDetail extends Component {
                   </div>
               </div>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Status:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The status of the transaction."><QuestionCircleOutlined /></Popover>Status:</div>
                   <div className="transactionsDetailGeryItem">
                     <span className="successStatus"><CheckCircleFilled />Success</span>
                   </div>
               </div>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Block:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="Number of the block in which the transaction is recorded. Block confirmations indicate how many blocks have been added since the transaction was validated."><QuestionCircleOutlined /></Popover>Block:</div>
                   <div className="transactionsDetailGeryItem redSpan">
                     <span className="redSpan cursorClass" onClick={() => this.jumpBlockDetail(this.state.transactionsDetail.block_height)}>
                       {this.state.transactionsDetail.block_height}
@@ -105,12 +105,12 @@ class TransactionsDetail extends Component {
                   </div>
               </div>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Timestamp:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The date and time at which a transaction is validated."><QuestionCircleOutlined /></Popover>Timestamp:</div>
                   <div className="transactionsDetailGeryItem">{this.state.transactionsDetail.block_time}</div>
               </div>
               <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><QuestionCircleOutlined />From:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The sending party of the transaction."><QuestionCircleOutlined /></Popover>From:</div>
                   <div className="transactionsDetailGeryItem">
                     <span className="longChang redSpan cursorClass" style={{width: '200px'}} onClick={() => {this.jumpAddress(this.state.transactionsDetail.from)}}>{this.state.transactionsDetail.from}</span>
                     {
@@ -120,7 +120,7 @@ class TransactionsDetail extends Component {
                   </div>
               </div>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><QuestionCircleOutlined />To:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The receiving party of the transaction (could be a contract address)."><QuestionCircleOutlined /></Popover>To:</div>
                   <div className="transactionsDetailGeryItem">
                     Address&nbsp;&nbsp;
                     <span className="longChang redSpan cursorClass"  style={{width: '200px'}} onClick={() => {this.jumpAddress(this.state.transactionsDetail.to)}}>{this.state.transactionsDetail.to}</span>
@@ -132,7 +132,7 @@ class TransactionsDetail extends Component {
               </div>
               <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Value:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The value being transacted in DND and fiat value. Note: You can click the fiat value (if available) to see historical value at the time of transaction."><QuestionCircleOutlined /></Popover>Value:</div>
                   <div className="transactionsDetailGeryItem" style={{display:"flex",flexWrap:'wrap'}}>
                     <span className="bgGrey">{this.state.transactionsDetail.amountLocal} DND </span>
                     <span>(${this.state.transactionsDetail.amountLocal})</span>
@@ -144,7 +144,7 @@ class TransactionsDetail extends Component {
               </div> */}
               <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Gas Price:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="Cost per unit of gas specified for the transaction, in DND and Gwei. The higher the gas price the higher chance of getting included in a block."><QuestionCircleOutlined /></Popover>Gas Price:</div>
                   <div className="transactionsDetailGeryItem">{this.state.transactionsDetail.price}DND</div>
               </div>
               {/* <div className="transactionsDetailItemBigBox">
