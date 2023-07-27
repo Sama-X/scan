@@ -221,7 +221,7 @@ class Home extends Component {
     return (
       <div className="home-page">
         <div className="homeSearchBox">
-          <h2>SIGTAC Chain Explorer</h2>
+          <h2>Novus Chain Explorer</h2>
           <div className='homeSearchInput'>
             {/* <Select
               className='homeSearchSelect'

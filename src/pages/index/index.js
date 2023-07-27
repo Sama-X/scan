@@ -108,7 +108,7 @@ class Index extends Component {
                   <div className="headerNavBox">
                     <div>
                     <img className="logo2" src={require("../../assets/logo2.png")} onClick={() => this.setState({collapsed: !collapsed})}/>
-                    <span style={{color: '#fff', fontSize: '16px', display: 'inline-block', marginLeft: '10px'}}>SIGTAC Network</span>
+                    <span style={{color: '#fff', fontSize: '16px', display: 'inline-block', marginLeft: '10px'}}>Novus Network</span>
                     </div>
                     <div
                         type="primary"
@@ -149,7 +149,7 @@ class Index extends Component {
                 <div className="homeWidth" style={{display:'flex',justifyContent: 'space-between',margin:'0 auto'}}>
                   <div className="logoImgBox" style={{marginTop: '10px'}}>
                     <img className="logo2" style={{width: '36px', height: '36px'}} src={require("../../assets/logo2.png")}/>
-                    <span style={{color: '#fff', fontSize: '16px', display: 'inline-block', marginLeft: '10px'}}>SIGTAC Network</span>
+                    <span style={{color: '#fff', fontSize: '16px', display: 'inline-block', marginLeft: '10px'}}>Novus Network</span>
                   </div>
                   <div style={{display:'flex',justifyContent: 'end'}}>
                     <Menu
@@ -179,7 +179,7 @@ class Index extends Component {
                   <Col className="footerLt" xs={{ span: 24}} lg={{ span: 12 }} style={{ display: 'flex'}}>
                     <img className="footerLeftLogo" src={require("../../assets/logo1.png")}/>
                     <div>
-                      Powered By SIGTAC
+                      Powered By Novus
                     </div>
                   </Col>
                   <Col className="footerGt" xs={{ span: 24 }} lg={{ span: 6,offset:6  }} style={{display:'flex',justifyContent:'end'}}>
@@ -205,7 +205,7 @@ class Index extends Component {
                       <span className="footerBotRed">Etherscan</span>
                       | Donate
                       <HeartFilled style={{color: '#e84142', margin:"5px 5px 0"}}/> */}
-                      Copyright © 2023 SIGTAC.NET All rights reserved.
+                      Copyright © 2023 Novus.NET All rights reserved.
                     </div>
                   </Col>
                   <Col className="footerBot" xs={{ span: 24 }} lg={{ span: 6,offset:6  }} style={{display:'flex',justifyContent:'end'}}>
