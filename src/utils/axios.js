@@ -1,7 +1,7 @@
 // import axios from 'axios';
 
 // const proBaseURL = 'http://16.162.44.95:8080';
-const proBaseURL = 'http://explorer-api.sigtacchain.com';
+const proBaseURL = 'https://explorer-api.sigtacchain.com';
 
 // http://47.122.41.201:8000/api/apps
 
