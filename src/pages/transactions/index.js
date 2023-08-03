@@ -118,7 +118,7 @@ class Transactions extends Component {
       for(let i in resData.data){
         if(resData.data[i].amount){
           if(resData.data[i].amount < 1000){
-            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000 : 0
+            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000000000 : 0
           }else{
             resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
           }
@@ -137,7 +137,7 @@ class Transactions extends Component {
       for(let i in resData.data){
         if(resData.data[i].amount){
           if(resData.data[i].amount < 1000){
-            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000 : 0
+            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000000000 : 0
           }else{
             resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
           }

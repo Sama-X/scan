@@ -132,7 +132,7 @@ class Address extends Component {
       _this.getAddressBottomDetail(id,_this.state.current,_this.state.pageSize)
       let localNumber = 0
       if(resData.data.balance < 1000){
-        localNumber = resData.data.balance ? resData.data.balance/1000 : 0
+        localNumber = resData.data.balance ? resData.data.balance/1000000000 : 0
       }else{
         localNumber = resData.data.balance.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2')
       }
@@ -146,7 +146,7 @@ class Address extends Component {
       _this.setState({addressBottomDetail:[]})
       for(let i in resData.data){
         if(resData.data[i].amount < 1000){
-          resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000 : 0
+          resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000000000 : 0
         }else{
           resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
         }

@@ -37,7 +37,7 @@ class TransactionsDetail extends Component {
       resData.data.amountLocal = 0
       if(resData.data.amount){
         if(resData.data.amount < 1000){
-          resData.data.amountLocal = resData.data.amount ? resData.data.amount/1000 : 0
+          resData.data.amountLocal = resData.data.amount ? resData.data.amount/1000000000 : 0
         }else{
           resData.data.amountLocal = resData.data.amount ? resData.data.amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data.amount
         }
