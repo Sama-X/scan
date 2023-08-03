@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Row, Col, Input, Select, Card, Table, Tooltip, Button, Divider } from "antd";
 import { Link } from 'react-router-dom';
 import Request from '../../request.ts';
+import {transferDigit} from '../../utils/calculate'
 import {withRouter} from "react-router-dom";
 
 let request = new Request({});
@@ -117,10 +118,10 @@ class Transactions extends Component {
       _this.setState({transactionsList:[]});
       for(let i in resData.data){
         if(resData.data[i].amount){
-          if(resData.data[i].amount < 1000){
+          if(resData.data[i].amount < 1000000000){
             resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000000000 : 0
           }else{
-            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+            resData.data[i].amountLocal = resData.data[i].amount ? transferDigit(resData.data[i].amount/1000000000) : resData.data[i].amount
           }
         }
         // resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
@@ -136,10 +137,10 @@ class Transactions extends Component {
       _this.setState({transactionsList:[]});
       for(let i in resData.data){
         if(resData.data[i].amount){
-          if(resData.data[i].amount < 1000){
+          if(resData.data[i].amount < 1000000000){
             resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000000000 : 0
           }else{
-            resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+            resData.data[i].amountLocal = resData.data[i].amount ? transferDigit(resData.data[i].amount/1000000000) : resData.data[i].amount
           }
         }
         // resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount

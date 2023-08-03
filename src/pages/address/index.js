@@ -131,10 +131,12 @@ class Address extends Component {
     request.get('/api/v1/wallet/'+id).then(function(resData){
       _this.getAddressBottomDetail(id,_this.state.current,_this.state.pageSize)
       let localNumber = 0
-      if(resData.data.balance < 1000){
+      if(resData.data.balance < 1000000000){
         localNumber = resData.data.balance ? resData.data.balance/1000000000 : 0
       }else{
-        localNumber = resData.data.balance.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2')
+        console.log('xxxx=', resData.data.balance/1000000000)
+        let reg = (resData.data.balance/1000000000).toString().indexOf(".") > -1 ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(?:\d{3})+$)/g;
+        localNumber = (resData.data.balance/1000000000).toString().replace(reg,"$1,");
       }
 
       _this.setState({addressTopDetail:resData.data,addressId:id,balanceValue:localNumber});
@@ -145,7 +147,7 @@ class Address extends Component {
     request.get('/api/v1/wallet/'+id+'/txs?page='+page+'&offset='+pageSize).then(function(resData){
       _this.setState({addressBottomDetail:[]})
       for(let i in resData.data){
-        if(resData.data[i].amount < 1000){
+        if(resData.data[i].amount < 1000000000){
           resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000000000 : 0
         }else{
           resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount

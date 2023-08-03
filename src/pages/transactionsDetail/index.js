@@ -10,6 +10,7 @@ import {
 import copy from 'copy-to-clipboard';
 import Request from '../../request.ts';
 import {withRouter} from "react-router-dom";
+import {transferDigit} from '../../utils/calculate'
 
 let request = new Request({});
 const items = [
@@ -36,10 +37,11 @@ class TransactionsDetail extends Component {
     request.get('/api/v1/txs/'+id).then(function(resData){
       resData.data.amountLocal = 0
       if(resData.data.amount){
-        if(resData.data.amount < 1000){
+        if(resData.data.amount < 1000000000){
           resData.data.amountLocal = resData.data.amount ? resData.data.amount/1000000000 : 0
         }else{
-          resData.data.amountLocal = resData.data.amount ? resData.data.amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data.amount
+          console.log('xxxx=', resData.data.amount)
+          resData.data.amountLocal = resData.data.amount ? transferDigit(resData.data.amount/1000000000) : resData.data.amount
         }
       }
       _this.setState({transactionsDetail:resData.data,transactionsId:id});
