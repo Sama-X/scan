@@ -262,10 +262,10 @@ class Home extends Component {
               <div className='homeSummaryKey'>Validators</div>
               <div className='homeSummaryValue'>{this.state.summaryInfo.validators}</div>
             </div>
-            <div className='homeSummaryItem'>
+            {/* <div className='homeSummaryItem'>
               <div className='homeSummaryKey'>Auditors</div>
               <div className='homeSummaryValue'>{this.state.summaryInfo.auditors}</div>
-            </div>
+            </div> */}
             <div className='homeSummaryItem'>
               <div className='homeSummaryKey'>Workers</div>
               <div className='homeSummaryValue'>{this.state.summaryInfo.workers}</div>

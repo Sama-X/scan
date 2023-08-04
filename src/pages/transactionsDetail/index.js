@@ -147,7 +147,7 @@ class TransactionsDetail extends Component {
               <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="Cost per unit of gas specified for the transaction, in DND and Gwei. The higher the gas price the higher chance of getting included in a block."><QuestionCircleOutlined /></Popover>Gas Price:</div>
-                  <div className="transactionsDetailGeryItem">{this.state.transactionsDetail.price}DND</div>
+                  <div className="transactionsDetailGeryItem">{transferDigit(this.state.transactionsDetail.price/1000000000)}DND</div>
               </div>
               {/* <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Gas Limit & Usage by Txn:</div>
