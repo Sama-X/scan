@@ -155,12 +155,12 @@ class BlocksDetail extends Component {
                   </div>
               </div>
               <Divider/>
-              <div className="transactionsDetailItemBigBox">
+              {/* <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="Uncle's block Hash"><QuestionCircleOutlined /></Popover>Sha3Uncles:</div>
                   <div className="transactionsDetailGeryItem">
                   <span className="longChang" style={{width: '200px'}}>{this.state.blocksDetail.access_proof}</span><CopyFilled onClick={()=>this.copyFunction(this.state.blocksDetail.access_proof)}/>
                   </div>
-              </div>
+              </div> */}
               {/* <Divider/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Nonce:</div>
