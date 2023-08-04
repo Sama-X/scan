@@ -13,6 +13,9 @@ import copy from 'copy-to-clipboard';
 import Request from '../../request.ts';
 import {withRouter} from "react-router-dom";
 
+import {transferDigit} from '../../utils/calculate'
+
+
 let request = new Request({});
 const items = [
   {
@@ -103,7 +106,7 @@ class BlocksDetail extends Component {
               <Divider/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="Fees burnt by this block."><QuestionCircleOutlined /></Popover>Burned Fees:</div>
-                  <div className="transactionsDetailGeryItem">{this.state.blocksDetail.price}</div>
+                  <div className="transactionsDetailGeryItem">{transferDigit(this.state.blocksDetail.price/1000000000)}</div>
               </div>
               <Divider/>
               {/* <div className="transactionsDetailItemBigBox">

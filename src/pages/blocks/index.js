@@ -4,6 +4,7 @@ import { Row, Col, Input, Select, Card, Table, Button, Divider } from "antd";
 import { Link } from 'react-router-dom';
 import Request from '../../request.ts';
 import {withRouter} from "react-router-dom";
+import {transferDigit} from '../../utils/calculate'
 
 
 let request = new Request({});
@@ -71,6 +72,7 @@ class Blocks extends Component {
       _this.setState({blocksList:[]})
       for(let i in resData.data){
         resData.data[i].index = i+1
+        resData.data[i].price = transferDigit(resData.data[i].price/1000000000)
       }
         _this.setState({blocksList:resData.data,blocksTotal:resData.total});
     })

@@ -153,6 +153,7 @@ class Address extends Component {
           resData.data[i].amountLocal = transferDigit(resData.data[i].amount/ 1000000000)
         }
         resData.data[i].index = i+1
+        resData.data[i].price = transferDigit(resData.data[i].price/1000000000)
       }
       _this.setState({addressBottomDetail:resData.data,addressBottomTotal:resData.total});
     })
