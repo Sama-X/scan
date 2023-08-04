@@ -8,6 +8,8 @@ import {
 import copy from 'copy-to-clipboard';
 import Request from '../../request.ts';
 import {withRouter} from "react-router-dom";
+import {transferDigit} from '../../utils/calculate'
+
 
 let request = new Request({});
 const items = [
@@ -134,9 +136,7 @@ class Address extends Component {
       if(resData.data.balance < 1000000000){
         localNumber = resData.data.balance ? resData.data.balance/1000000000 : 0
       }else{
-        console.log('xxxx=', resData.data.balance/1000000000)
-        let reg = (resData.data.balance/1000000000).toString().indexOf(".") > -1 ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(?:\d{3})+$)/g;
-        localNumber = (resData.data.balance/1000000000).toString().replace(reg,"$1,");
+        localNumber = transferDigit(resData.data.balance/1000000000);
       }
 
       _this.setState({addressTopDetail:resData.data,addressId:id,balanceValue:localNumber});
@@ -150,7 +150,7 @@ class Address extends Component {
         if(resData.data[i].amount < 1000000000){
           resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount/1000000000 : 0
         }else{
-          resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
+          resData.data[i].amountLocal = transferDigit(resData.data[i].amount/ 1000000000)
         }
         resData.data[i].index = i+1
       }
