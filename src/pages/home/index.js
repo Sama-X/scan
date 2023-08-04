@@ -7,6 +7,7 @@ import {} from "react-router-dom";
 import { UserOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
 import searchIcon from '../../assets/search.svg'
+import {transferDigit} from '../../utils/calculate'
 
 
 let request = new Request({});
