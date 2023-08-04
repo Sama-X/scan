@@ -123,8 +123,9 @@ class Transactions extends Component {
           }else{
             resData.data[i].amountLocal = resData.data[i].amount ? transferDigit(resData.data[i].amount/1000000000) : resData.data[i].amount
           }
-          resData.data[i].price = transferDigit(resData.data[i].price/1000000000)
+
         }
+        resData.data[i].price = transferDigit(resData.data[i].price/1000000000)
         // resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
         resData.data[i].index = i+1
       }
@@ -144,6 +145,7 @@ class Transactions extends Component {
             resData.data[i].amountLocal = resData.data[i].amount ? transferDigit(resData.data[i].amount/1000000000) : resData.data[i].amount
           }
         }
+        resData.data[i].price = transferDigit(resData.data[i].price/1000000000)
         // resData.data[i].amountLocal = resData.data[i].amount ? resData.data[i].amount.toLocaleString().replace(/([^,]*),([^,]*)$/g, '$1.$2') : resData.data[i].amount
         resData.data[i].index = i+1
       }
