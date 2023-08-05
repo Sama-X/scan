@@ -106,7 +106,7 @@ class BlocksDetail extends Component {
               <Divider/>
               <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="Fees burnt by this block."><QuestionCircleOutlined /></Popover>Burned Fees:</div>
-                  <div className="transactionsDetailGeryItem">{transferDigit(this.state.blocksDetail.price * this.state.blocksDetail.txs_total / 1000000000)}</div>
+                  <div className="transactionsDetailGeryItem">{transferDigit(this.state.blocksDetail.price * this.state.blocksDetail.txs_total * 2 / 1000000000)}</div>
               </div>
               <Divider/>
               {/* <div className="transactionsDetailItemBigBox">

@@ -70,10 +70,10 @@ class Blocks extends Component {
     let _this = this
 
     request.get('/api/v1/home/blocks?page='+page+'&offset='+pageSize).then(function(resData){
-      _this.setState({blocksList:[], total_burned: transferDigit(resData.total_burned / 1000000000)})
+      _this.setState({blocksList:[], total_burned: transferDigit(resData.total_burned * 2 / 1000000000)})
       for(let i in resData.data){
         resData.data[i].index = i+1
-        resData.data[i].price = transferDigit(resData.data[i].price * resData.data[i].txs_total / 1000000000)
+        resData.data[i].price = transferDigit(resData.data[i].price * resData.data[i].txs_total * 2 / 1000000000)
       }
         _this.setState({blocksList:resData.data,blocksTotal:resData.total});
     })
