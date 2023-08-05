@@ -14,6 +14,7 @@ class Blocks extends Component {
     blocksTotal: 0,
     current:1,
     pageSize:20,
+    total_burned: 0,
   };
   constructor (props) {
     super(props)
@@ -52,11 +53,11 @@ class Blocks extends Component {
         //   dataIndex: 'cost',
         //   key: 'cost',
         // },
-        {
-          title: 'Gas Limit',
-          dataIndex: 'cost',
-          key: 'cost',
-        },
+        // {
+        //   title: 'Gas Limit',
+        //   dataIndex: 'cost',
+        //   key: 'cost',
+        // },
         {
           title: 'Burned (DND)',
           dataIndex: 'price',
@@ -69,10 +70,10 @@ class Blocks extends Component {
     let _this = this
 
     request.get('/api/v1/home/blocks?page='+page+'&offset='+pageSize).then(function(resData){
-      _this.setState({blocksList:[]})
+      _this.setState({blocksList:[], total_burned: transferDigit(resData.total_burned / 1000000000)})
       for(let i in resData.data){
         resData.data[i].index = i+1
-        resData.data[i].price = transferDigit(resData.data[i].price/1000000000)
+        resData.data[i].price = transferDigit(resData.data[i].price * resData.data[i].txs_total / 1000000000)
       }
         _this.setState({blocksList:resData.data,blocksTotal:resData.total});
     })
@@ -93,7 +94,7 @@ class Blocks extends Component {
         <div className="blocksHeaderBox">
           <h2 style={{color: '#fff'}}>Blocks</h2>
           <div className="blocksHeaderNumber">
-            <span style={{color: '#fff'}}>🔥 Burnt Fees: 0 DND</span>
+            <span style={{color: '#fff'}}>🔥 Burnt Fees: { this.state.total_burned } DND</span>
           </div>
         </div>
         <Card
