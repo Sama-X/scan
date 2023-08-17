@@ -34,7 +34,7 @@ const items = [
     {
       type: 'divider',
     },
-    // getItem('Top Accounts', '4'),
+    getItem('Top Accounts', '4'),
   ]),
 ];
 // console.log(items,'jhkl')

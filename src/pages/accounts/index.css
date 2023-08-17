@@ -1,7 +1,7 @@
 .accounts-page{
     width: 90%;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 80px 0;
 }
 .accountsHeaderBox{
     display: flex;
@@ -13,6 +13,13 @@
     height: 30px;
     line-height: 20px;
 }
+
+.ant-table-cell {
+    background-color: #1C1C1C !important;
+    color: #fff !important;
+    border-color: #000 !important;
+}
+
 .ant-table-cell a{
     color:#e84142
 }
