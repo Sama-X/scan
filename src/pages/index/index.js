@@ -201,7 +201,7 @@ class Index extends Component {
                 <Row className="footerRow">
                   <Col className="footerBot" xs={{ span: 24}} lg={{ span: 12 }} style={{ display: 'flex'}}>
                     <div>
-                      {/* SnowTrace © 2023  (DNDTestnet-A) |  ⛏ Built by the same team behind
+                      {/* SnowTrace © 2023  (tDNDTestnet-A) |  ⛏ Built by the same team behind
                       <span className="footerBotRed">Etherscan</span>
                       | Donate
                       <HeartFilled style={{color: '#e84142', margin:"5px 5px 0"}}/> */}

@@ -97,7 +97,7 @@ class BlocksDetail extends Component {
               </div>
               <Divider/>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The number of transactions in the block. Internal transaction is transactions as a result of contract execution that involves DND value."><QuestionCircleOutlined /></Popover>Transactions:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The number of transactions in the block. Internal transaction is transactions as a result of contract execution that involves tDND value."><QuestionCircleOutlined /></Popover>Transactions:</div>
                   <div className="transactionsDetailGeryItem" style={{display:"flex",flexWrap:'wrap'}}>
                     <span className="bgRed cursorClass" onClick={()=>this.jumpTransaction(this.state.blocksDetail.block_id)}>{this.state.blocksDetail.txs_total} transactions&nbsp;&nbsp;</span>
                     <span>in this block</span>

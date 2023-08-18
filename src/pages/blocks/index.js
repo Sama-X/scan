@@ -59,7 +59,7 @@ class Blocks extends Component {
         //   key: 'cost',
         // },
         {
-          title: 'Burned (DND)',
+          title: 'Burned (tDND)',
           dataIndex: 'price',
           key: 'price',
         },
@@ -94,7 +94,7 @@ class Blocks extends Component {
         <div className="blocksHeaderBox">
           <h2 style={{color: '#fff'}}>Blocks</h2>
           <div className="blocksHeaderNumber">
-            <span style={{color: '#fff'}}>🔥 Burnt Fees: { this.state.total_burned } DND</span>
+            <span style={{color: '#fff'}}>🔥 Burnt Fees: { this.state.total_burned } tDND</span>
           </div>
         </div>
         <Card

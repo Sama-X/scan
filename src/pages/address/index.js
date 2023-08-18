@@ -209,7 +209,7 @@ class Address extends Component {
               </div>
               <div className="addressItemBigBox">
                   <div className="addressRedItem">Balance:</div>
-                  <div className="addressGeryItem">{this.state.balanceValue}  DND</div>
+                  <div className="addressGeryItem">{this.state.balanceValue}  tDND</div>
               </div>
               <div className="addressItemBigBox" style={{height:20,border:'none'}}></div>
               <div className="addressItemBigBox" style={{height:20,border:'none'}}></div>

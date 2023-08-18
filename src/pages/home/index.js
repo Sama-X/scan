@@ -313,7 +313,7 @@ class Home extends Component {
                           <div>
                             🔥 0
                             <b>.</b>
-                            03105 DND
+                            03105 tDND
                           </div>
                         </Col> */}
                       </Row>
@@ -358,7 +358,7 @@ class Home extends Component {
                         </Col>
                         <Col xs={{ span: 10}} lg={{ span: 5}} className="homeRightItem">
                           <div>
-                            {item.amountLocal} DND
+                            {item.amountLocal} tDND
                           </div>
                         </Col>
                       </Row>

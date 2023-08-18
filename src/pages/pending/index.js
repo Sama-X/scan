@@ -62,7 +62,7 @@ const data = [
     used:'428,975 (5.36%)',
     limit:'20.3',
     fee:'0.00223',
-    burned:'0.01173 DND',
+    burned:'0.01173 tDND',
     method:'Allocate To',
   },
   {
@@ -75,7 +75,7 @@ const data = [
     used:'428,975 (5.36%)',
     limit:'20.3',
     fee:'0.00223',
-    burned:'0.01173 DND',
+    burned:'0.01173 tDND',
     method:'Allocate To',
   },
   {
@@ -88,7 +88,7 @@ const data = [
     used:'428,975 (5.36%)',
     limit:'20.3',
     fee:'0.00223',
-    burned:'0.01173 DND',
+    burned:'0.01173 tDND',
     method:'Allocate To',
   },
 ];

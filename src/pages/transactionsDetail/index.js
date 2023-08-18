@@ -134,9 +134,9 @@ class TransactionsDetail extends Component {
               </div>
               <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The value being transacted in DND and fiat value. Note: You can click the fiat value (if available) to see historical value at the time of transaction."><QuestionCircleOutlined /></Popover>Value:</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="The value being transacted in tDND and fiat value. Note: You can click the fiat value (if available) to see historical value at the time of transaction."><QuestionCircleOutlined /></Popover>Value:</div>
                   <div className="transactionsDetailGeryItem" style={{display:"flex",flexWrap:'wrap'}}>
-                    <span className="bgGrey">{this.state.transactionsDetail.amountLocal} DND </span>
+                    <span className="bgGrey">{this.state.transactionsDetail.amountLocal} tDND </span>
                     <span>(${this.state.transactionsDetail.amountLocal})</span>
                   </div>
               </div>
@@ -146,8 +146,8 @@ class TransactionsDetail extends Component {
               </div> */}
               <Divider style={{ backgroundColor: '#000'}}/>
               <div className="transactionsDetailItemBigBox">
-                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="Cost per unit of gas specified for the transaction, in DND and Gwei. The higher the gas price the higher chance of getting included in a block."><QuestionCircleOutlined /></Popover>Gas Price:</div>
-                  <div className="transactionsDetailGeryItem">{transferDigit(this.state.transactionsDetail.price/1000000000)}DND</div>
+                  <div className="transactionsDetailRedItem"><Popover placement="bottomRight" content="Cost per unit of gas specified for the transaction, in tDND and Gwei. The higher the gas price the higher chance of getting included in a block."><QuestionCircleOutlined /></Popover>Gas Price:</div>
+                  <div className="transactionsDetailGeryItem">{transferDigit(this.state.transactionsDetail.price/1000000000)}tDND</div>
               </div>
               {/* <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Gas Limit & Usage by Txn:</div>
@@ -161,7 +161,7 @@ class TransactionsDetail extends Component {
               </div> */}
               {/* <div className="transactionsDetailItemBigBox">
                   <div className="transactionsDetailRedItem"><QuestionCircleOutlined />Burnt Fees:</div>
-                  <div className="transactionsDetailGeryItem"><span className="bgOrange">🔥 Burnt: 0.001382725 DND</span></div>
+                  <div className="transactionsDetailGeryItem"><span className="bgOrange">🔥 Burnt: 0.001382725 tDND</span></div>
               </div> */}
               {/* <Divider/>
               <div className="transactionsDetailItemBigBox">
