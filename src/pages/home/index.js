@@ -213,7 +213,7 @@ class Home extends Component {
               clearInterval(this.state.timer);
           }
       });
-    }, 10000)
+    }, 3000)
   }
   componentWillUnmount() {
     clearInterval(this.state.timer);
